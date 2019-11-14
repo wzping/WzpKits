@@ -1,5 +1,7 @@
 package wzp.kits.cycle;
 
+import android.support.v4.app.Fragment;
+
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.function.CycleViewPager;
@@ -19,7 +21,7 @@ public class CycleViewPagerActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        cycle_viewpager = (CycleViewPager)getFragmentManager().findFragmentById(R.id.cycle_viewpager);
+        cycle_viewpager = (CycleViewPager)getSupportFragmentManager().findFragmentById(R.id.cycle_viewpager);
     }
 
     @Override
