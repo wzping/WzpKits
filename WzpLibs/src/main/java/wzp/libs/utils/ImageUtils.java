@@ -4,6 +4,7 @@ package wzp.libs.utils;
 import android.content.Context;
 import android.widget.ImageView;
 
+import wzp.libs.R;
 
 
 /**
@@ -20,7 +21,7 @@ public class ImageUtils {
 	 * @return ImageView控件
 	 */
 	public static ImageView getImageView(Context mContext, int resId){
-		return getImageView(mContext,resId, ImageView.ScaleType.CENTER_CROP);
+		return getImageView(mContext,resId, ImageView.ScaleType.FIT_XY);
 	}
 
 
@@ -38,15 +39,19 @@ public class ImageUtils {
 	 * @return ImageView控件
 	 */
 	public static ImageView getImageView(Context mContext,String url){
-		return getImageView(mContext,url,ImageView.ScaleType.CENTER_CROP);
+		return getImageView(mContext,url,ImageView.ScaleType.FIT_XY);
 	}
 
 
 	public static ImageView getImageView(Context mContext,String url,ImageView.ScaleType scaleType){
-		ImageView image = new ImageView(mContext);
-		image.setScaleType(scaleType);
-		GlideUtils.getInstance().loadPicList(mContext,url,image);
-		return image;
+		return getImageView(mContext,url,scaleType, R.drawable.ic_error1);
 	}
 
+
+	public static ImageView getImageView(Context mContext,String url,ImageView.ScaleType scaleType,int defaultPic){
+		ImageView image = new ImageView(mContext);
+		image.setScaleType(scaleType);
+		GlideUtils.getInstance().loadPicList(mContext,url,image,defaultPic);
+		return image;
+	}
 }
