@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e0ae52</color>
+    <color name="colorPrimaryDark">#e0ae52</color>  <!--系统状态栏颜色-->
+    <color name="colorAccent">#D81B60</color>  <!--光标颜色-->
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="pink">#33ff0000</color>
+    <color name="blue">#3cc3fb</color>
+</resources>
