@@ -61,6 +61,8 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 	private int incicator_margin_right = 0;
 	//指示点之间的距离
 	private int incicator_margin_padding = 5;
+	//点击事件
+	private OnItemClickListener onClickListener;
 
 
 	@Override
@@ -80,17 +82,18 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 	 * 轮播网络地址图片
 	 * @param urlImages
 	 */
-	public void startCycle(String[] urlImages){
-		startCycle(urlImages,R.drawable.ic_indicator_normal,R.drawable.ic_indicator_selected);
+	public void startCycle(String[] urlImages,OnItemClickListener onClickListener){
+		startCycle(urlImages,R.drawable.ic_indicator_normal,R.drawable.ic_indicator_selected,onClickListener);
 	}
 
-	public void startCycle(String[] urlImages,int indicatorNormal,int indicatorSelected){
+	public void startCycle(String[] urlImages,int indicatorNormal,int indicatorSelected,OnItemClickListener onClickListener){
 		if (urlImages == null || urlImages.length == 0) {
 			return;
 		}
 
-		indicator_normal = indicatorNormal;
-		indicator_selected = indicatorSelected;
+		this.indicator_normal = indicatorNormal;
+		this.indicator_selected = indicatorSelected;
+		this.onClickListener = onClickListener;
 
 		size = urlImages.length;  //1,2,3,4,5,6...
 		List<View> imageLists = new ArrayList<>();
@@ -99,7 +102,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 
 			imageLists.add(ImageUtils.getImageView(mContext,urlImages[0])); //添加这一张就好了
 
-			viewPagerAdapter = new ViewPagerAdapter(imageLists);
+			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
 			fragment_cycle_viewPager.setAdapter(viewPagerAdapter);
 
 		}else{   //轮播图大于或等于2张的情况
@@ -114,7 +117,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 			imageLists.add(ImageUtils.getImageView(mContext,urlImages[0]));
 
 			fragment_cycle_viewPager.setOffscreenPageLimit(size); //预加载，加载过后不会再重新加载了
-			viewPagerAdapter = new ViewPagerAdapter(imageLists);
+			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
 			fragment_cycle_viewPager.setAdapter(viewPagerAdapter);
 			//显示真正的第一张图片
 			fragment_cycle_viewPager.setCurrentItem(1);
@@ -135,18 +138,19 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 	 * 轮播本地资源图片
 	 * @param resImages
 	 */
-	public void startCycle(int[] resImages){
-		startCycle(resImages,R.drawable.ic_indicator_normal,R.drawable.ic_indicator_selected);
+	public void startCycle(int[] resImages,OnItemClickListener onClickListener){
+		startCycle(resImages,R.drawable.ic_indicator_normal,R.drawable.ic_indicator_selected,onClickListener);
 	}
 
 
-	public void startCycle(int[] resImages,int indicatorNormal,int indicatorSelected){
+	public void startCycle(int[] resImages,int indicatorNormal,int indicatorSelected,OnItemClickListener onClickListener){
 		if (resImages == null || resImages.length == 0) {
 			return;
 		}
 
-		indicator_normal = indicatorNormal;
-		indicator_selected = indicatorSelected;
+		this.indicator_normal = indicatorNormal;
+		this.indicator_selected = indicatorSelected;
+		this.onClickListener = onClickListener;
 
 		size = resImages.length;  //1,2,3,4,5,6...
 		List<View> imageLists = new ArrayList<>();
@@ -155,7 +159,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 
 			imageLists.add(ImageUtils.getImageView(mContext,resImages[0])); //添加这一张就好了
 
-			viewPagerAdapter = new ViewPagerAdapter(imageLists);
+			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
 			fragment_cycle_viewPager.setAdapter(viewPagerAdapter);
 
 		}else{   //轮播图大于或等于2张的情况
@@ -170,7 +174,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 			imageLists.add(ImageUtils.getImageView(mContext,resImages[0]));
 
 			fragment_cycle_viewPager.setOffscreenPageLimit(size); //预加载，加载过后不会再重新加载了
-			viewPagerAdapter = new ViewPagerAdapter(imageLists);
+			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
 			fragment_cycle_viewPager.setAdapter(viewPagerAdapter);
 			//显示真正的第一张图片
 			fragment_cycle_viewPager.setCurrentItem(1);
@@ -296,22 +300,20 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 		isGestureScroll = false;
 	}
 
-	//--------------------------------  对外提供方法
-
 	/**
-	 * 点击事件
+	 * 点击回调
 	 */
-	public void setOnItemClickListener(final OnItemClickListener onItemClickListener){
-		if (viewPagerAdapter!=null){
-			viewPagerAdapter.setOnItemClickListener(new OnItemClickListener() {
-				@Override
-				public void onItemClick(int position) {
-					if (onItemClickListener!=null)
-						onItemClickListener.onItemClick(currentPos);
-				}
-			});
+	private OnItemClickListener onItemClickListener = new OnItemClickListener() {
+		@Override
+		public void onItemClick(int position) {
+			if (onClickListener!=null){
+				onClickListener.onItemClick(currentPos);
+			}
 		}
-	}
+	};
+
+
+	//--------------------------------  对外提供方法
 
 
 	/**

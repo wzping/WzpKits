@@ -4,6 +4,8 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.List;
+
+import wzp.libs.utils.LogUtils;
 import wzp.libs.widget.able.OnItemClickListener;
 
 
@@ -21,6 +23,12 @@ public class ViewPagerAdapter extends PagerAdapter {
 	public ViewPagerAdapter(List<View> views) {
 		super();
 		this.views = views;
+	}
+
+	public ViewPagerAdapter(List<View> views,OnItemClickListener onItemClickListener) {
+		super();
+		this.views = views;
+		this.onItemClickListener = onItemClickListener;
 	}
 
 	@Override
@@ -52,9 +60,5 @@ public class ViewPagerAdapter extends PagerAdapter {
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
 		container.removeView((View) object);
-	}
-
-	public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-		this.onItemClickListener = onItemClickListener;
 	}
 }
