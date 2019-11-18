@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
-import wzp.libs.utils.ImageUtils;
+import wzp.libs.utils.ImageViewUtils;
 import wzp.libs.widget.adapter.ViewPagerAdapter;
 
 
@@ -53,13 +53,13 @@ public class Guide1Activity extends BaseActivity {
         viewFlipper2 =  viewLists.get(1).findViewById(R.id.viewFlipper2);//第二个页面
         int[] resPage2 = {R.drawable.guide_2_01, R.drawable.guide_2_02};
         for (int i = 0; i < resPage2.length; i++){
-            viewFlipper2.addView(ImageUtils.getImageView(mContext,resPage2[i]));
+            viewFlipper2.addView(ImageViewUtils.getImageView(mContext,resPage2[i]));
         }
 
         viewFlipper3 =  viewLists.get(2).findViewById(R.id.viewFlipper3);//第3个页面
         int[] resPage3 = {R.drawable.guide_3_01, R.drawable.guide_3_02, R.drawable.guide_3_03};
         for (int i = 0; i < resPage3.length; i++){
-            viewFlipper3.addView(ImageUtils.getImageView(mContext,resPage3[i]));
+            viewFlipper3.addView(ImageViewUtils.getImageView(mContext,resPage3[i]));
         }
 
         ag_viewpager.setAdapter(new ViewPagerAdapter(viewLists));

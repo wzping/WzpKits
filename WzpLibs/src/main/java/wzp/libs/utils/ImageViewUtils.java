@@ -8,11 +8,11 @@ import wzp.libs.R;
 
 
 /**
- * Image 相关的工具类
+ * ImageView 相关的工具类
  */
-public class ImageUtils {
+public class ImageViewUtils {
 	//日志
-	private static final String TAG = ImageUtils.class.getSimpleName();
+	private static final String TAG = ImageViewUtils.class.getSimpleName();
 
 	/**
 	 * 获取ImageView控件

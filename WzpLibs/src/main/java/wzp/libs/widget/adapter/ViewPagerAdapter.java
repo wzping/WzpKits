@@ -4,8 +4,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.List;
-
-import wzp.libs.utils.LogUtils;
 import wzp.libs.widget.able.OnItemClickListener;
 
 

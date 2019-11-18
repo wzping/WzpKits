@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
-import wzp.libs.utils.ImageUtils;
+import wzp.libs.utils.ImageViewUtils;
 import wzp.libs.widget.adapter.ViewPagerAdapter;
 
 
@@ -55,7 +55,7 @@ public class Guide2Activity extends BaseActivity {
         size = localImages.length;
         List<View> viewLists = new ArrayList<>();
         for(int i=0; i<size; i++){
-            viewLists.add(ImageUtils.getImageView(mContext,localImages[i]));
+            viewLists.add(ImageViewUtils.getImageView(mContext,localImages[i]));
         }
         guide_viewpager.setAdapter(new ViewPagerAdapter(viewLists));
 

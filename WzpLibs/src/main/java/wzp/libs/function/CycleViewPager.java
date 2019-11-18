@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 import wzp.libs.R;
-import wzp.libs.utils.ImageUtils;
+import wzp.libs.utils.ImageViewUtils;
 import wzp.libs.utils.ScreenUtils;
 import wzp.libs.widget.able.OnItemClickListener;
 import wzp.libs.widget.adapter.ViewPagerAdapter;
@@ -105,7 +105,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 		imageLists.clear();
 		if (size==1){  //轮播图只有一张的情况下
 
-			imageLists.add(ImageUtils.getImageView(mContext,urlImages[0],scaleType,defaultPic)); //添加这一张就好了
+			imageLists.add(ImageViewUtils.getImageView(mContext,urlImages[0],scaleType,defaultPic)); //添加这一张就好了
 
 			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
 			fragment_cycle_viewPager.setAdapter(viewPagerAdapter);
@@ -113,13 +113,13 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 		}else{   //轮播图大于或等于2张的情况
 			//额外添加最后一张和第一张图片的目的是:最后一张再向右滑动时显示第一张，第一张向左滑动时显示最后一张
 			//先添加最后一张
-			imageLists.add(ImageUtils.getImageView(mContext,urlImages[size-1],scaleType,defaultPic));
+			imageLists.add(ImageViewUtils.getImageView(mContext,urlImages[size-1],scaleType,defaultPic));
 			//再轮流全部添加
 			for (int i=0;i<urlImages.length;i++){
-				imageLists.add(ImageUtils.getImageView(mContext,urlImages[i],scaleType,defaultPic));
+				imageLists.add(ImageViewUtils.getImageView(mContext,urlImages[i],scaleType,defaultPic));
 			}
 			//最后添加第一张
-			imageLists.add(ImageUtils.getImageView(mContext,urlImages[0],scaleType,defaultPic));
+			imageLists.add(ImageViewUtils.getImageView(mContext,urlImages[0],scaleType,defaultPic));
 
 			fragment_cycle_viewPager.setOffscreenPageLimit(size); //预加载，加载过后不会再重新加载了
 			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
@@ -162,7 +162,7 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 		imageLists.clear();
 		if (size==1){  //轮播图只有一张的情况下
 
-			imageLists.add(ImageUtils.getImageView(mContext,resImages[0],scaleType)); //添加这一张就好了
+			imageLists.add(ImageViewUtils.getImageView(mContext,resImages[0],scaleType)); //添加这一张就好了
 
 			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
 			fragment_cycle_viewPager.setAdapter(viewPagerAdapter);
@@ -170,13 +170,13 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 		}else{   //轮播图大于或等于2张的情况
 			//额外添加最后一张和第一张图片的目的是:最后一张再向右滑动时显示第一张，第一张向左滑动时显示最后一张
 			//先添加最后一张
-			imageLists.add(ImageUtils.getImageView(mContext,resImages[size-1],scaleType));
+			imageLists.add(ImageViewUtils.getImageView(mContext,resImages[size-1],scaleType));
 			//再轮流全部添加
 			for (int i=0;i<resImages.length;i++){
-				imageLists.add(ImageUtils.getImageView(mContext,resImages[i],scaleType));
+				imageLists.add(ImageViewUtils.getImageView(mContext,resImages[i],scaleType));
 			}
 			//最后添加第一张
-			imageLists.add(ImageUtils.getImageView(mContext,resImages[0],scaleType));
+			imageLists.add(ImageViewUtils.getImageView(mContext,resImages[0],scaleType));
 
 			fragment_cycle_viewPager.setOffscreenPageLimit(size); //预加载，加载过后不会再重新加载了
 			viewPagerAdapter = new ViewPagerAdapter(imageLists,onItemClickListener);
