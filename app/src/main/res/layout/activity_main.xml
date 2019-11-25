@@ -81,6 +81,18 @@
             android:layout_margin="10dp"/>
 
 
+        <!--点击图片放大查看（手势）-->
+
+        <TextView
+            android:id="@+id/am_tv_look"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="点击图片放大查看"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 </ScrollView>

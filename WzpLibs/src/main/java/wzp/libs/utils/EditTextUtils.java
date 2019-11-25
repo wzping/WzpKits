@@ -22,6 +22,7 @@ public class EditTextUtils {
 
 
 	/**
+	 * 设置EditText中剩余可输入文字长度的展示
 	 * EditText中可输入的长度 时时改变 长度剩余0的时候不能再输入(布局代码中设置  android:maxLength="xx")
 	 * @param et  输入文字的EditText
 	 * @param num 可以输入的文字总个数

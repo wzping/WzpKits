@@ -31,6 +31,11 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //加载Gif动态图
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    //recyclerview
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //PhotoView 点击图片放大预览查看
+    implementation 'com.github.chrisbanes:PhotoView:2.1.0'
     //WzpLib
     implementation project(path: ':WzpLibs')
+
 }
