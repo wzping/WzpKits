@@ -18,6 +18,7 @@ import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.utils.GlideUtils;
+import wzp.libs.widget.ScrollViewPager;
 import wzp.libs.widget.adapter.RvBaseAdapter;
 import wzp.libs.widget.adapter.RvBaseViewHolder;
 import wzp.libs.widget.adapter.ViewPagerAdapter;
@@ -28,8 +29,10 @@ public class PhotoViewActivity extends BaseActivity {
     ImageView photoview_back;
     @BindView(R.id.photoview_index)
     TextView photoview_index;
+    //用于解决java.lang.IllegalArgumentException: pointerIndex out of range
+    //这里的scrollable默认就是为true的，不用去设置
     @BindView(R.id.photoview_viewpager)
-    ViewPager photoview_viewpager;
+    ScrollViewPager photoview_viewpager;
     //加载的图片张数
     private int size;
 

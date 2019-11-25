@@ -34,7 +34,12 @@ public class ScrollViewPager extends ViewPager {
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent event) {
 		if (scrollable) {
-			return super.onInterceptTouchEvent(event);
+			try {
+				return super.onInterceptTouchEvent(event);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
 		} else {
 			return false;
 		}
