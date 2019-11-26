@@ -29,7 +29,7 @@ public class PhotoActivity extends BaseActivity {
     protected void initValues() {
 
         List<String> imageList = new ArrayList<>();
-        imageList.add("http://p2.so.qhimg.com/t01dac8a835c87bd007.jpg");
+        imageList.add("http://txyl.txygc.com:8003/upload/App/Formal/PostFile/20191116/37deff96140b432eb94792850d1b8de6.jpg");
         imageList.add("http://hbimg.b0.upaiyun.com/a56d0eef33cc70b5f43978559b72976267e3b2451d1a4-qOvjqS_fw658");
         imageList.add("http://pic1.win4000.com/pic/b/03/21691230681.jpg");
         imageList.add("https://goss.veer.com/creative/vcg/veer/1600water/veer-133331142.jpg");
