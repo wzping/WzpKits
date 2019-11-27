@@ -76,7 +76,7 @@ public class PhotoViewActivity extends BaseActivity {
                 @Override
                 public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                     //图片加载异常
-                    LogUtils.d("图片加载异常");
+                    LogUtils.d("图片加载异常:" + e.toString());
                     progressBar.setVisibility(View.GONE);
                     return false;
                 }

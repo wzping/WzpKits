@@ -52,6 +52,25 @@ public class GlideUtils {
 				.into(iv); //加载显示图片
 	}
 
+	//添加加载图片回调监听
+	public void loadPic(Context mContext, String url, ImageView iv,RequestListener<Drawable> requestListener){
+		loadPic(mContext, url, iv, requestListener,R.drawable.ic_error1);
+	}
+
+	public void loadPic(Context mContext, String url, ImageView iv,RequestListener<Drawable> requestListener,int defaultPic){
+
+		RequestOptions requestOptions = new RequestOptions()
+				.skipMemoryCache(true)//跳过内存缓存
+				.diskCacheStrategy(DiskCacheStrategy.NONE)//不要在disk硬盘缓存
+				.placeholder(defaultPic) //加载成功前显示的图片
+				.fallback(defaultPic) //url为空的时候,显示的图片
+				.error(defaultPic); //异常时候显示的图片
+
+		Glide.with(mContext).load(url)
+				.apply(requestOptions)
+				.listener(requestListener)
+				.into(iv); //加载显示图片
+	}
 
 	//---------------------------------
 
