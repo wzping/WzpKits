@@ -66,33 +66,41 @@ public class PhotoViewActivity extends BaseActivity {
 
         photoview_index.setText((position+1) + "/" + size);
 
-        List<View> imageLists = new ArrayList<>();
-        imageLists.clear();
-        for (int i=0;i<size;i++){
-            View view = LayoutInflater.from(mContext).inflate(R.layout.item_photo_view, null);
-            PhotoView photoView = view.findViewById(R.id.photo_view);
-            final ProgressBar progressBar = view.findViewById(R.id.photo_view_pb);
-            GlideUtils.getInstance().loadPicList(mContext, arrayList.get(i), photoView, new RequestListener<Drawable>() {
-                @Override
-                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                    //图片加载异常
-                    LogUtils.d("图片加载异常:" + e.toString());
-                    progressBar.setVisibility(View.GONE);
-                    return false;
-                }
+//        在项目中这种监听的方式很容易发生内存溢出,暂时注释吧
+//        List<View> imageLists = new ArrayList<>();
+//        imageLists.clear();
+//        for (int i=0;i<size;i++){
+//            View view = LayoutInflater.from(mContext).inflate(R.layout.item_photo_view, null);
+//            PhotoView photoView = view.findViewById(R.id.photo_view);
+//            final ProgressBar progressBar = view.findViewById(R.id.photo_view_pb);
+//            GlideUtils.getInstance().loadPicList(mContext, arrayList.get(i), photoView, new RequestListener<Drawable>() {
+//                @Override
+//                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                    //图片加载异常
+//                    LogUtils.d("图片加载异常:" + e.toString());
+//                    progressBar.setVisibility(View.GONE);
+//                    return false;
+//                }
+//
+//                @Override
+//                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+//                    //图片加载完成
+//                    LogUtils.d("图片加载完成");
+//                    progressBar.setVisibility(View.GONE);
+//                    return false;
+//                }
+//            });
+//            imageLists.add(view);
+//        }
+//        photoview_viewpager.setOffscreenPageLimit(size); //预加载，加载过后不会再重新加载了
+//        photoview_viewpager.setAdapter(new ViewPagerAdapter(imageLists));
+//        photoview_viewpager.setCurrentItem(position);
 
-                @Override
-                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                    //图片加载完成
-                    LogUtils.d("图片加载完成");
-                    progressBar.setVisibility(View.GONE);
-                    return false;
-                }
-            });
-            imageLists.add(view);
+        List<View> viewLists = new ArrayList<>();
+        for(int i=0; i<size; i++){
+            viewLists.add(getImageView(arrayList.get(i)));
         }
-        photoview_viewpager.setOffscreenPageLimit(size); //预加载，加载过后不会再重新加载了
-        photoview_viewpager.setAdapter(new ViewPagerAdapter(imageLists));
+        photoview_viewpager.setAdapter(new ViewPagerAdapter(viewLists));
         photoview_viewpager.setCurrentItem(position);
     }
 
@@ -126,6 +134,13 @@ public class PhotoViewActivity extends BaseActivity {
                 // 2表示手指抬起状态
             }
         });
+    }
+
+
+    public PhotoView getImageView(String url){
+        PhotoView photoView = new PhotoView(mContext);
+        GlideUtils.getInstance().loadPic(mContext,url,photoView);
+        return photoView;
     }
 }
 

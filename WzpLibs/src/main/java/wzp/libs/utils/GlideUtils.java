@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -52,26 +53,6 @@ public class GlideUtils {
 				.into(iv); //加载显示图片
 	}
 
-	//添加加载图片回调监听
-	public void loadPic(Context mContext, String url, ImageView iv,RequestListener<Drawable> requestListener){
-		loadPic(mContext, url, iv, requestListener,R.drawable.ic_error1);
-	}
-
-	public void loadPic(Context mContext, String url, ImageView iv,RequestListener<Drawable> requestListener,int defaultPic){
-
-		RequestOptions requestOptions = new RequestOptions()
-				.skipMemoryCache(true)//跳过内存缓存
-				.diskCacheStrategy(DiskCacheStrategy.NONE)//不要在disk硬盘缓存
-				.placeholder(defaultPic) //加载成功前显示的图片
-				.fallback(defaultPic) //url为空的时候,显示的图片
-				.error(defaultPic); //异常时候显示的图片
-
-		Glide.with(mContext).load(url)
-				.apply(requestOptions)
-				.listener(requestListener)
-				.into(iv); //加载显示图片
-	}
-
 	//---------------------------------
 
 
@@ -85,26 +66,29 @@ public class GlideUtils {
 		RequestOptions requestOptions = new RequestOptions()
 				.placeholder(defaultPic) //加载成功前显示的图片
 				.fallback(defaultPic) //url为空的时候,显示的图片
-				.error(defaultPic) ;//异常时候显示的图片
+				.error(defaultPic); //异常时候显示的图片
+
 
 		Glide.with(mContext).load(url)
 				.apply(requestOptions)
 				.into(iv); //加载显示图片
 	}
 
+    //---------------------------------
 
 	//添加加载图片回调监听
 	public void loadPicList(Context mContext, String url, ImageView iv,RequestListener<Drawable> requestListener){
 		loadPicList(mContext, url, iv, requestListener,R.drawable.ic_error1);
 	}
 
-	//加载图片,不跳过缓存（只要加载的链接不变，就不会再重新加载了）
+	//加载图片
 	public void loadPicList(Context mContext, String url, ImageView iv,RequestListener<Drawable> requestListener,int defaultPic){
 
 		RequestOptions requestOptions = new RequestOptions()
 				.placeholder(defaultPic) //加载成功前显示的图片
 				.fallback(defaultPic) //url为空的时候,显示的图片
-				.error(defaultPic) ;//异常时候显示的图片
+				.error(defaultPic) //异常时候显示的图片
+                .format(DecodeFormat.PREFER_RGB_565);
 
 		Glide.with(mContext).load(url)
 				.apply(requestOptions)
