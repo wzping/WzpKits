@@ -40,7 +40,7 @@ public class PhotoViewActivity extends BaseActivity {
     @BindView(R.id.photoview_index)
     TextView photoview_index;
     //ScrollViewPager用于解决java.lang.IllegalArgumentException: pointerIndex out of range
-    //这里的scrollable默认就是为true的，不用去设置
+    //scrollable默认为true的情况下的ScrollViewPager
     @BindView(R.id.photoview_viewpager)
     ScrollViewPager photoview_viewpager;
     //加载的图片张数

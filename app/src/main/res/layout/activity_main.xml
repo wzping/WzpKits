@@ -90,7 +90,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:text="点击图片放大查看"
+            android:text="点击图片放大查看(TODO)"
             android:textColor="@color/white"
             android:textSize="16sp"/>
 
