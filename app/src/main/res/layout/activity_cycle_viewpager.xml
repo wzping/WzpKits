@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/cycle_viewpager"
-        android:name="wzp.libs.function.CycleViewPager"
+        android:name="wzp.libs.function.cycle.CycleViewPager"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
 

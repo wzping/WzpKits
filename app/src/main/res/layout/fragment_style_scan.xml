@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--SurfaceView和ViewfinderView的id要设置成这个-->
+
+    <SurfaceView
+        android:id="@+id/surfaceview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <wzp.libs.function.zxing.view.ViewfinderView
+        android:id="@+id/viewfinderview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:inner_corner_color="#5aff0e"
+        app:inner_scan_bitmap="@drawable/ic_scan_line"
+        app:inner_scan_iscircle="false"
+        app:inner_scan_hint_text="将产品二维码放入框中，即可自动扫描"/>
+
+
+    <!-- inner_margintop : 扫描框距离手机的上边距 这个属性可以在代码中设置：setInnerMarginTop -->
+    <!-- inner_width : 扫描框的宽度                          默认手机宽度的一半-->
+    <!-- inner_height : 扫描框的高度                         默认手机宽度的一半-->
+    <!-- inner_corner_color : 扫描框边角颜色                 默认#45DDDD-->
+    <!-- inner_corner_length : 扫描框边角长度                        -->
+    <!-- inner_corner_width : 扫描框边角宽度                              -->
+    <!-- inner_scan_bitmap : 扫描线资源图片 -->
+    <!-- inner_scan_speed : 扫描速度 -->
+    <!-- inner_scan_iscircle : 扫描过程中是否显示圆点         默认显示-->
+    <!-- inner_scan_hint_text : 扫描边框下面的提示文字        注意：该属性布局代码中一定要设置-->
+    <!-- inner_scan_hint_color : 扫描边框下面的提示文字颜色   默认白色 -->
+    <!-- inner_scan_hint_size : 扫描边框下面的提示文字大小    默认16-->
+    <!-- inner_scan_hint_margin_top : 扫描框下面的提示文字的边距（距离上面） -->
+    <!-- inner_scan_hint_bold : 扫描边框下面的提示文字是否加粗  默认加粗-->
+
+</FrameLayout>

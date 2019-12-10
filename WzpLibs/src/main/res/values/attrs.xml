@@ -9,5 +9,35 @@
     </declare-styleable>
 
 
-
+    <!--自定义扫码属性-->
+    <declare-styleable name="ViewfinderView">
+        <!--扫描框距离手机的上边距-->
+        <attr name="inner_margintop" format="dimension" />
+        <!--扫描框的宽度-->
+        <attr name="inner_width" format="dimension"/>
+        <!--扫描框的高度-->
+        <attr name="inner_height" format="dimension"/>
+        <!--扫描框边角颜色-->
+        <attr name="inner_corner_color" format="color" />
+        <!--扫描框边角长度-->
+        <attr name="inner_corner_length" format="dimension" />
+        <!--扫描框边角宽度-->
+        <attr name="inner_corner_width" format="dimension" />
+        <!--扫描线-->
+        <attr name="inner_scan_bitmap" format="reference" /><!--reference:表示引用,参考某一资源id-->
+        <!--扫描速度-->
+        <attr name="inner_scan_speed" format="integer" /> <!--表示整型值-->
+        <!--扫描过程中是否显示圆点-->
+        <attr name="inner_scan_iscircle" format="boolean" />
+        <!--扫描边框下面的提示文字-->
+        <attr name="inner_scan_hint_text" format="string" /><!-- 表示字符串-->
+        <!--扫描边框下面的提示文字颜色-->
+        <attr name="inner_scan_hint_color" format="color" /><!--表示颜色值-->
+        <!-- 扫描边框下面的提示文字大小-->
+        <attr name="inner_scan_hint_size" format="dimension" /><!--表示尺寸值-->
+        <!--扫描框下面的提示文字的边距（距离上面）-->
+        <attr name="inner_scan_hint_margin_top" format="dimension" />
+        <!--扫描边框下面的提示文字是否加粗-->
+        <attr name="inner_scan_hint_bold" format="boolean" /><!--表示布尔值-->
+    </declare-styleable>
 </resources>

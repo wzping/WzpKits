@@ -4,7 +4,7 @@ package wzp.kits.cycle;
 
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
-import wzp.libs.function.CycleViewPager;
+import wzp.libs.function.cycle.CycleViewPager;
 import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.able.OnItemClickListener;
 

@@ -9,6 +9,7 @@ import wzp.kits.gif.LoadingGifActivity;
 import wzp.kits.guide.Guide1Activity;
 import wzp.kits.guide.Guide2Activity;
 import wzp.kits.photoview.PhotoActivity;
+import wzp.kits.scan.RelatedCodeActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -26,6 +27,9 @@ public class MainActivity extends BaseActivity {
     /** 点击图片放大查看 */
     @BindView(R.id.am_tv_look)
     TextView am_tv_look;
+    /** 扫码 */
+    @BindView(R.id.am_tv_scan)
+    TextView am_tv_scan;
 
     @Override
     protected int getLayout() {
@@ -66,6 +70,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, PhotoActivity.class));
+            }
+        });
+        //扫码
+        am_tv_scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, RelatedCodeActivity.class));
             }
         });
     }
