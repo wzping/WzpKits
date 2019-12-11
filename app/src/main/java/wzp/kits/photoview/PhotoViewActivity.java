@@ -1,22 +1,11 @@
 package wzp.kits.photoview;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
@@ -26,12 +15,8 @@ import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.utils.GlideUtils;
-import wzp.libs.utils.LogUtils;
-import wzp.libs.widget.ScrollViewPager;
-import wzp.libs.widget.adapter.RvBaseAdapter;
-import wzp.libs.widget.adapter.RvBaseViewHolder;
+import wzp.libs.widget.viewpager.ControlScrollViewPager;
 import wzp.libs.widget.adapter.ViewPagerAdapter;
-import wzp.libs.widget.dialog.AppLoadingDialog;
 
 public class PhotoViewActivity extends BaseActivity {
 
@@ -39,10 +24,10 @@ public class PhotoViewActivity extends BaseActivity {
     ImageView photoview_back;
     @BindView(R.id.photoview_index)
     TextView photoview_index;
-    //ScrollViewPager用于解决java.lang.IllegalArgumentException: pointerIndex out of range
-    //scrollable默认为true的情况下的ScrollViewPager
+    //ControlScrollViewPager用于解决java.lang.IllegalArgumentException: pointerIndex out of range
+    //scrollable默认为true的情况下的ControlScrollViewPager
     @BindView(R.id.photoview_viewpager)
-    ScrollViewPager photoview_viewpager;
+    ControlScrollViewPager photoview_viewpager;
     //加载的图片张数
     private int size;
 

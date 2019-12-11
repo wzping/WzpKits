@@ -269,6 +269,12 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public RvBaseViewHolder setUrlImage(Context context, int viewId, String imageUrl) {
+        ImageView view = getView(viewId);
+        GlideUtils.getInstance().loadPic(context,imageUrl,view, R.drawable.ic_error1);
+        return this;
+    }
+
    public RvBaseViewHolder setUrlImage(Context context, int viewId, String imageUrl, int defaultPic) {
         ImageView view = getView(viewId);
         GlideUtils.getInstance().loadPic(context,imageUrl,view,defaultPic);

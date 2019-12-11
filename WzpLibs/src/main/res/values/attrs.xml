@@ -40,4 +40,14 @@
         <!--扫描边框下面的提示文字是否加粗-->
         <attr name="inner_scan_hint_bold" format="boolean" /><!--表示布尔值-->
     </declare-styleable>
+
+
+    <!-- 自定义六边形图片控件 -->
+    <declare-styleable name="HexagonView">
+        <attr name="text" format="string" /> <!--文字-->
+        <attr name="textSize" format="dimension" /> <!--字体大小-->
+        <attr name="textColor" format="color" /><!--字体颜色-->
+        <attr name="backColor" format="color" /><!--背景色-->
+        <attr name="src" format="reference" /><!--图片-->
+    </declare-styleable>
 </resources>

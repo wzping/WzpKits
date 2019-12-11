@@ -1,4 +1,4 @@
-package wzp.libs.widget;
+package wzp.libs.widget.viewpager;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -7,19 +7,19 @@ import android.view.MotionEvent;
 
 
 /**
- * 是否可以滑动的viewpager
+ * 是否可以滑动(左右滑动)的viewpager
  */
-public class ScrollViewPager extends ViewPager {
+public class ControlScrollViewPager extends ViewPager {
 
 	//默认可以滑动
 	private boolean scrollable = true;
 
-	public ScrollViewPager(Context context) {
+	public ControlScrollViewPager(Context context) {
 		super(context);
 	}
 
 
-	public ScrollViewPager(Context context, AttributeSet attrs) {
+	public ControlScrollViewPager(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/ap_btn_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="普通步骤申请拍照权限示例"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/ap_btn_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拍照权限"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/ap_btn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定位权限"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/ap_btn_window"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="悬浮窗权限"
+        android:layout_margin="10dp"/>
+
+</LinearLayout>
