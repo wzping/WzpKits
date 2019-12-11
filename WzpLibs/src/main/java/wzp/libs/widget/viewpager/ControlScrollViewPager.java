@@ -23,12 +23,19 @@ public class ControlScrollViewPager extends ViewPager {
 		super(context, attrs);
 	}
 
-	/**
-	 * 设置是否可以滑动
-	 * @param enable
-	 */
-	public void setScrollable(boolean enable) {
-		scrollable = enable;
+
+	@Override
+	public boolean onTouchEvent(MotionEvent ev) {
+		if (scrollable) {
+			try {
+				return super.onTouchEvent(ev);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		}else {
+			return false;
+		}
 	}
 
 	@Override
@@ -43,5 +50,30 @@ public class ControlScrollViewPager extends ViewPager {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * 设置是否可以滑动
+	 * @param enable
+	 */
+	public void setScrollable(boolean enable) {
+		scrollable = enable;
+	}
+
+
+	/**
+	 * 获取是否允许滑动
+	 * @return
+	 */
+	public boolean isScrollable() {
+		return scrollable;
+	}
+
+
+	/**
+	 * 切换滑动状态
+	 */
+	public void toggleScrollable() {
+		this.scrollable = !this.scrollable;
 	}
 }
