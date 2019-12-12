@@ -10,4 +10,6 @@
     <color name="blue">#3cc3fb</color>
 
     <color name="black_trans88">#88000000</color>
+
+    <color name="gray_DC">#DCDCDC</color>
 </resources>

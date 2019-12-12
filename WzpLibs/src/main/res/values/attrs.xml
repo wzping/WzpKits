@@ -50,4 +50,22 @@
         <attr name="backColor" format="color" /><!--背景色-->
         <attr name="src" format="reference" /><!--图片-->
     </declare-styleable>
+
+
+    <!--自定义圆环进度控件-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundColor" format="color"/> <!--圆环默认显示颜色-->
+        <attr name="roundProgressColor" format="color"/> <!--圆环进度条颜色-->
+        <attr name="roundWidth" format="dimension"/><!--圆环默认宽度-->
+        <attr name="roundProgressWidth" format="dimension"/> <!--圆环进度宽度-->
+        <attr name="max" format="integer"/> <!--进度最大值-->
+        <attr name="tvColor" format="color"/> <!--进度文字显示颜色-->
+        <attr name="tvSize" format="dimension"/> <!--进度字体显示大小-->
+        <attr name="textIsDisplayable" format="boolean"/> <!--进度文字是否显示-->
+        <attr name="percentIsDisplayable" format="boolean"/><!-- %是否展示-->
+        <attr name="style"><!-- 进度展示样式（圆环形还是饼状形）-->
+            <enum name="STROKE" value="0"/>  <!--环形样式 默认-->
+            <enum name="FILL" value="1"/> <!--饼状样式-->
+        </attr>
+    </declare-styleable>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -33,5 +34,35 @@
             android:layout_centerVertical="true"
             android:src="@drawable/selector_ic_more" />
     </RelativeLayout>
+
+
+    <!--自定义圆环进度-->
+    <wzp.libs.widget.RoundProgressBar
+        android:id="@+id/round_progress_bar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="15dp"
+        app:roundColor="@color/gray_DC"
+        app:roundProgressColor="@color/colorPrimary"
+        app:max="100"
+        app:tvColor="@color/colorPrimary"
+        app:tvSize="16sp"
+        app:textIsDisplayable="true"
+        app:percentIsDisplayable="false"
+        app:style="STROKE"
+        app:roundWidth="4dp"
+        app:roundProgressWidth="7dp"/>
+
+    <!--roundColor 圆环默认显示颜色(默认红色) -->
+    <!--roundProgressColor 圆环进度条颜色（默认绿色） -->
+    <!--max 进度最大值（默认100） -->
+    <!--tvColor 进度文字显示颜色（默认绿色） -->
+    <!--tvSize 进度字体显示大小（默认15） -->
+    <!--textIsDisplayable 进度文字是否显示（默认是显示的） -->
+    <!--percentIsDisplayable %是否展示（默认是显示的） -->
+    <!--style STROKE-圆环样式(默认)  FILL（饼状样式）-->
+    <!--roundWidth 圆环默认宽度（默认5） -->
+    <!--roundProgressWidth 圆环进度宽度（默认5） -->
+    <!--注意：圆环进度的宽度不能小于圆环的宽度-->
 
 </LinearLayout>

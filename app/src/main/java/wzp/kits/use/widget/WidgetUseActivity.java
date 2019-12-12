@@ -8,6 +8,7 @@ import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.widget.LineTextView;
+import wzp.libs.widget.RoundProgressBar;
 
 
 /**
@@ -21,6 +22,9 @@ public class WidgetUseActivity extends BaseActivity {
     @BindView(R.id.iv_switch_line)
     ImageView iv_switch_line;
 
+    @BindView(R.id.round_progress_bar)
+    RoundProgressBar round_progress_bar;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_widget_use;
@@ -30,6 +34,8 @@ public class WidgetUseActivity extends BaseActivity {
     protected void initValues() {
         String name = "张三,李四,王五,赵六,钱七,二麻子,狗柱子,牛蛋,翠花，西湾子，狗剩，还有啥，哈哈,赖皮蛤蟆,哇哇兔，莉莉，也不知道够不够两行了";
         line_text_view.setText(name);
+
+        round_progress_bar.setProgress(25);
     }
 
     @Override
