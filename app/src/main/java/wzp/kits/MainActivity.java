@@ -10,9 +10,13 @@ import wzp.kits.guide.Guide1Activity;
 import wzp.kits.guide.Guide2Activity;
 import wzp.kits.photoview.PhotoActivity;
 import wzp.kits.scan.RelatedCodeActivity;
+import wzp.kits.use.widget.WidgetUseActivity;
 
 public class MainActivity extends BaseActivity {
 
+    /** widget库的使用示例activity */
+    @BindView(R.id.tv_widget_use)
+    TextView tv_widget_use;
     /** 引导页 */
     @BindView(R.id.am_tv_guide1)
     TextView am_tv_guide1;
@@ -38,6 +42,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+        //widget库的使用示例activity
+        tv_widget_use.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, WidgetUseActivity.class));
+            }
+        });
         //引导页
         am_tv_guide1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,12 +18,24 @@
             android:textColor="@color/white"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/tv_widget_use"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="Widget库的使用"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_margin="10dp"/>
+
+
         <!--引导页-->
 
         <LinearLayout
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal">
 
@@ -63,6 +75,7 @@
             android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="加载Gif"
+            android:layout_margin="10dp"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -77,8 +90,7 @@
             android:gravity="center"
             android:text="轮播图"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_margin="10dp"/>
+            android:textSize="16sp" />
 
 
         <!--点击图片放大查看（手势）-->
@@ -92,7 +104,8 @@
             android:gravity="center"
             android:text="点击图片放大查看(TODO)"
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:layout_margin="10dp"/>
 
 
         <!--扫码-->
@@ -105,7 +118,6 @@
             android:gravity="center"
             android:text="扫码"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_margin="10dp"/>
+            android:textSize="16sp"/>
     </LinearLayout>
 </ScrollView>
