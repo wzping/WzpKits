@@ -63,6 +63,7 @@
     <!--style STROKE-圆环样式(默认)  FILL（饼状样式）-->
     <!--roundWidth 圆环默认宽度（默认5） -->
     <!--roundProgressWidth 圆环进度宽度（默认5） -->
-    <!--注意：圆环进度的宽度不能小于圆环的宽度-->
+
+    <!--【 注意：设置的时候，圆环进度的宽度roundProgressWidth不能小于圆环的宽度roundWidth,否则显示会有问题】-->
 
 </LinearLayout>

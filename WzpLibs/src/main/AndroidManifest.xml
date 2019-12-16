@@ -9,7 +9,9 @@
 
     <activity
         android:name=".utils.PermissionUtils$PermissActivity"
-        android:screenOrientation="portrait"
         android:theme="@android:style/Theme.Translucent"/>
+
+       <!-- android:screenOrientation="portrait"
+        设置了透明，又设置朝向的话会报错-->
     </application>
 </manifest>
