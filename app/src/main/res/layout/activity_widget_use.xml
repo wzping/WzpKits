@@ -21,8 +21,10 @@
             android:layout_marginRight="5.0dip"
             android:layout_toLeftOf="@+id/iv_switch_line"
             android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="false"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <!--android:ellipsize="end"  省略号显示在结尾-->
 
@@ -32,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/selector_ic_more" />
+            android:src="@drawable/selector_ic_more"
+            android:visibility="invisible" />
     </RelativeLayout>
 
 
@@ -42,16 +45,16 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="15dp"
+        app:max="100"
+        app:percentIsDisplayable="false"
         app:roundColor="@color/gray_DC"
         app:roundProgressColor="@color/colorPrimary"
-        app:max="100"
-        app:tvColor="@color/colorPrimary"
-        app:tvSize="16sp"
-        app:textIsDisplayable="true"
-        app:percentIsDisplayable="false"
-        app:style="STROKE"
+        app:roundProgressWidth="7dp"
         app:roundWidth="4dp"
-        app:roundProgressWidth="7dp"/>
+        app:style="STROKE"
+        app:textIsDisplayable="true"
+        app:tvColor="@color/colorPrimary"
+        app:tvSize="16sp" />
 
     <!--roundColor 圆环默认显示颜色(默认红色) -->
     <!--roundProgressColor 圆环进度条颜色（默认绿色） -->
@@ -78,25 +81,25 @@
             android:id="@+id/calendar_left_arrow"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_left_arrow_black"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:src="@drawable/ic_left_arrow_black" />
 
         <TextView
             android:id="@+id/calendar_center_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/white"
+            android:layout_centerInParent="true"
             android:text=" 月 日"
-            android:layout_centerInParent="true"/>
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/calendar_right_arrow"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_right_arrow_black"
             android:layout_alignParentRight="true"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:src="@drawable/ic_right_arrow_black" />
     </RelativeLayout>
 
     <wzp.libs.widget.CalendarView
@@ -104,14 +107,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        app:lineColor="@color/colorPrimaryDark"
-        app:otherDateColor="@color/gray_DC"
-        app:validTextColor="@color/black_42"
-        app:todayNumberColor="@color/colorPrimaryDark"
-        app:todayNumberCellColor="@color/colorPrimaryDark"
         app:cellDownColor="@color/colorPrimaryDark"
+        app:lineColor="@color/colorPrimaryDark"
         app:numberCellWidth="2dp"
-        app:weekTextColor="@color/black_42"/>
+        app:otherDateColor="@color/gray_DC"
+        app:todayNumberCellColor="@color/colorPrimaryDark"
+        app:todayNumberColor="@color/colorPrimaryDark"
+        app:validTextColor="@color/black_42"
+        app:weekTextColor="@color/black_42" />
 
 
 </LinearLayout>

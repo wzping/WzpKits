@@ -23,6 +23,7 @@ import wzp.libs.utils.ScreenUtils;
 /**
  * 自定义日历View
  * 以下注释均以 2017年11月19（当前系统时间）为准的
+ * invalidate
  */
 public class CalendarView extends View implements View.OnTouchListener {
 	private final static String TAG = "CalendarView";
@@ -160,8 +161,6 @@ public class CalendarView extends View implements View.OnTouchListener {
 
 		setOnTouchListener(this);
 
-		//设置整个日历的背景颜色
-		//setBackgroundColor(surface.calendarBgColor);
 	}
 
 	//widthMeasureSpec heightMeasureSpec,他们是和宽高相关的，
@@ -362,7 +361,7 @@ public class CalendarView extends View implements View.OnTouchListener {
 	}
 
 	/**
-	 * 绘制当前日子的背景图（空心圆圈）
+	 * 绘制日期的背景圈
 	 * @param canvas
 	 * @param index 当前日子在日历中的索引 21
 	 * @param color 背景圆圈颜色
@@ -414,17 +413,8 @@ public class CalendarView extends View implements View.OnTouchListener {
 		/** 本月具体日期单元格的高度*/
 		public float cellHeight;
 
-
-		/**当前日子的背景圆圈*/
+		/** 日期背景圈的画笔 */
 		public Paint cellBgPaint;
-
-
-		//多选时的颜色
-		public int cellSelectedColor = Color.parseColor("#50C7FA");
-
-		//整个日历的背景颜色
-		//public int calendarBgColor = Color.parseColor("#00ff00");
-
 
 
 		public void init() {
@@ -489,10 +479,6 @@ public class CalendarView extends View implements View.OnTouchListener {
 		}
 		return false;
 	}
-
-
-
-
 
 
 	//设置日历时间
@@ -580,7 +566,10 @@ public class CalendarView extends View implements View.OnTouchListener {
         }
         invalidate();
     }
+
+
 	//===========================  对外公开方法 ================================================
+
 
 	/**
 	 * 获取当前年
