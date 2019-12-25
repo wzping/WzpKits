@@ -66,4 +66,52 @@
 
     <!--【 注意：设置的时候，圆环进度的宽度roundProgressWidth不能小于圆环的宽度roundWidth,否则显示会有问题】-->
 
+
+    <!--自定义日历控件-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/calendar_left_arrow"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_left_arrow_black"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/calendar_center_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text=" 月 日"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/calendar_right_arrow"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_right_arrow_black"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"/>
+    </RelativeLayout>
+
+    <wzp.libs.widget.CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:lineColor="@color/colorPrimaryDark"
+        app:otherDateColor="@color/gray_DC"
+        app:validTextColor="@color/black_42"
+        app:todayNumberColor="@color/colorPrimaryDark"
+        app:todayNumberCellColor="@color/colorPrimaryDark"
+        app:cellDownColor="@color/colorPrimaryDark"
+        app:numberCellWidth="2dp"
+        app:weekTextColor="@color/black_42"/>
+
+
 </LinearLayout>

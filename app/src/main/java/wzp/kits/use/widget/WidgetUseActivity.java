@@ -1,12 +1,24 @@
 package wzp.kits.use.widget;
 
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
+import wzp.libs.utils.LogUtils;
+import wzp.libs.utils.ScreenUtils;
+import wzp.libs.utils.ToastUtils;
+import wzp.libs.widget.CalendarView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
 
@@ -22,8 +34,20 @@ public class WidgetUseActivity extends BaseActivity {
     @BindView(R.id.iv_switch_line)
     ImageView iv_switch_line;
 
+    /** 自定义圆形进度环*/
     @BindView(R.id.round_progress_bar)
     RoundProgressBar round_progress_bar;
+
+    /** 自定义日历控件*/
+    @BindView(R.id.calendar_left_arrow)
+    ImageView calendar_left_arrow;
+    @BindView(R.id.calendar_right_arrow)
+    ImageView calendar_right_arrow;
+    @BindView(R.id.calendar_center_tv)
+    TextView calendar_center_tv;
+    @BindView(R.id.calendar_view)
+    CalendarView calendar_view;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); //格式化日期
 
     @Override
     protected int getLayout() {
@@ -36,6 +60,20 @@ public class WidgetUseActivity extends BaseActivity {
         line_text_view.setText(name);
 
         round_progress_bar.setProgress(25);
+
+        calendar_center_tv.setText(calendar_view.getCurrentYear()+"年"+calendar_view.getCurrentMonth()+"月");
+        calendar_view.setCalendarWidth(getResources().getDisplayMetrics().widthPixels - ScreenUtils.dipConvertPx(mContext,30));
+        calendar_view.setCalendarHeight(getResources().getDisplayMetrics().heightPixels*3/10);
+
+        calendar_view.setCircleTextColor(Color.WHITE);
+        calendar_view.setCircleCellColor(getResources().getColor(R.color.colorPrimaryDark));
+        calendar_view.setCircleCellStyle(Paint.Style.FILL);
+        ArrayList<Integer> datas = new ArrayList<>();
+        datas.add(2);
+        datas.add(8);
+        datas.add(18);
+        datas.add(21);
+        calendar_view.setData(datas);
     }
 
     @Override
@@ -63,6 +101,31 @@ public class WidgetUseActivity extends BaseActivity {
                 boolean isAllowNewLine = line_text_view.isAllowNewLine();
                 // 允许换行,则设置为不允许(取反)
                 line_text_view.setAllowNewLine(!isAllowNewLine);
+            }
+        });
+
+        calendar_left_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] split = calendar_view.getLastYearMonthDay().split("-");
+                calendar_center_tv.setText(split[0] + "年" + split[1] + "月");
+            }
+        });
+        calendar_right_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] split = calendar_view.getNextYearMonthDay().split("-");
+                calendar_center_tv.setText(split[0] + "年" + split[1] + "月");
+            }
+        });
+        calendar_view.setOnItemClickListener(new CalendarView.OnItemClickListener() {
+            @Override
+            public void OnItemClick(Date selectedStartDate, Date selectedEndDate, Date downDate) {
+                if(calendar_view.isSelectMore()){//多选
+                    ToastUtils.showToast(mContext,simpleDateFormat.format(selectedStartDate)+"到"+simpleDateFormat.format(selectedEndDate));
+                }else{ //单选，点击只选择一个
+                    ToastUtils.showToast(mContext,simpleDateFormat.format(downDate));
+                }
             }
         });
     }

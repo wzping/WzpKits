@@ -68,4 +68,23 @@
             <enum name="FILL" value="1"/> <!--饼状样式-->
         </attr>
     </declare-styleable>
+
+
+    <!--自定义日历控件-->
+    <declare-styleable name="CalendarView">
+        <attr name="lineColor" format="color"/> <!-- 周上下两根线的颜色-->
+        <attr name="otherDateColor" format="color"/> <!-- 不是当月日的文字颜色-->
+        <attr name="validTextColor" format="color"/> <!-- 本月有效日的颜色-->
+        <attr name="todayNumberColor" format="color"/> <!-- 今日的文字颜色-->
+        <attr name="todayNumberCellColor" format="color"/> <!-- 今日的文字背景圈颜色-->
+        <attr name="numberCellWidth" format="dimension"/> <!-- 所有显示的日期的背景圈宽度-->
+        <attr name="cellDownColor" format="color"/> <!-- 点击选择日子时的背景颜色-->
+        <attr name="weekTextSize" format="dimension"/> <!-- 周的文字大小-->
+        <attr name="weekTextColor" format="color"/> <!-- 周的文字颜色-->
+        <attr name="calendarTextSize" format="dimension"/> <!-- 整个日历日期的文字大小-->
+        <attr name="showTodayNumber" format="boolean"/> <!-- 今日日期是直接展示日期还是展示"今天"-->
+        <attr name="circleTextColor" format="color"/> <!-- 需要圈出的日期集合的文字颜色-->
+        <attr name="circleCellColor" format="color"/> <!-- 需要圈出的日期集合的文字的背景圈颜色-->
+
+    </declare-styleable>
 </resources>

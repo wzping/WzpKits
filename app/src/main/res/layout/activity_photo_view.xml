@@ -14,7 +14,7 @@
             android:id="@+id/photoview_back"
             android:layout_width="45dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_back"
+            android:src="@drawable/ic_left_arrow_white"
             android:padding="15dp"/>
 
 
