@@ -12,63 +12,64 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import wzp.libs.R;
 
-
 /**
- * 设定一个时间(00:00:00),然后开始倒计时
+ * 设定一个时间(00:00:00),然后在设定的时间上累加计时
  */
 @SuppressLint("HandlerLeak")
-public class CountDownTimerView extends LinearLayout {
+public class CountUpTimerView extends LinearLayout {
 
 	/** 小时，十位 */
 	private TextView tv_hour_decade;
-	/** 小时，个位*/
+	/** 小时，个位 */
 	private TextView tv_hour_unit;
-	/** 分钟，十位*/
+	/** 分钟，十位 */
 	private TextView tv_min_decade;
-	/**分钟，个位*/
+	/**分钟，个位 */
 	private TextView tv_min_unit;
-	/** 秒，十位*/
+	/** 秒，十位 */
 	private TextView tv_sec_decade;
-	/** 秒，个位*/
+	/** 秒，个位 */
 	private TextView tv_sec_unit;
-	private LayoutInflater inflater;
-	private View view;
 	private int hour_decade;
 	private int hour_unit;
 	private int min_decade;
 	private int min_unit;
 	private int sec_decade;
 	private int sec_unit;
-	private Timer timer;// 计时器
+	private LayoutInflater inflater;
+	private View view;
+	private Timer timer; // 计时器
 
 
-	public CountDownTimerView(Context context, AttributeSet attrs) {
-		super(context,attrs);
+	public CountUpTimerView(Context context, AttributeSet attrs) {
+		super(context, attrs);
 
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		//默认布局文件
 		setLayout(R.layout.view_counttimer);
+
 	}
+
 
 	private Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
-			countDown();
+			countUp();
 		}
 	};
 
+
 	/**
-	 * 倒计时
+	 * 累计时
 	 */
-	private void countDown() {
+	private void countUp() {
 		if (isCarry4Unit(tv_sec_unit)) {
 			if (isCarry4Decade(tv_sec_decade)) {
-
 				if (isCarry4Unit(tv_min_unit)) {
 					if (isCarry4Decade(tv_min_decade)) {
-
 						if (isCarry4Unit(tv_hour_unit)) {
 							if (isCarry4Decade(tv_hour_decade)) {
 //								Toast.makeText(context, "时间到了", Toast.LENGTH_SHORT).show();
@@ -89,9 +90,9 @@ public class CountDownTimerView extends LinearLayout {
 	 */
 	private boolean isCarry4Unit(TextView tv) {
 		int time = Integer.valueOf(tv.getText().toString());
-		time = time - 1;
-		if (time < 0) {
-			time = 9;
+		time = time + 1;
+		if (time > 9) {
+			time = 0;
 			tv.setText(time + "");
 			return true;
 		} else {
@@ -99,7 +100,6 @@ public class CountDownTimerView extends LinearLayout {
 			return false;
 		}
 	}
-
 
 	/**
 	 * 变化十位，并判断是否需要进位
@@ -108,9 +108,9 @@ public class CountDownTimerView extends LinearLayout {
 	 */
 	private boolean isCarry4Decade(TextView tv) {
 		int time = Integer.valueOf(tv.getText().toString());
-		time = time - 1;
-		if (time < 0) {
-			time = 5;
+		time = time + 1;
+		if (time > 5) {
+			time = 0;
 			tv.setText(time + "");
 			return true;
 		} else {
@@ -118,7 +118,6 @@ public class CountDownTimerView extends LinearLayout {
 			return false;
 		}
 	}
-
 
 	//------------------------------  对外公开方法 --------------------------------
 
@@ -150,17 +149,19 @@ public class CountDownTimerView extends LinearLayout {
 
 
 	/**
-	 * 设置开始倒计时的时间节点
+	 * 设置开始计时的时间节点
 	 * @param hour
 	 * @param min
 	 * @param sec
 	 */
 	public void setTime(int hour, int min, int sec) {
+
 		if (hour >= 60 || min >= 60 || sec >= 60 || hour < 0 || min < 0 || sec < 0) {
 			return;
 		}
-		hour_decade = hour / 10;   //十位
-		hour_unit = hour - hour_decade * 10;  //个位
+
+		hour_decade = hour / 10;
+		hour_unit = hour - hour_decade * 10;
 
 		min_decade = min / 10;
 		min_unit = min - min_decade * 10;
@@ -168,18 +169,16 @@ public class CountDownTimerView extends LinearLayout {
 		sec_decade = sec / 10;
 		sec_unit = sec - sec_decade * 10;
 
-		tv_hour_decade.setText(hour_decade + ""); //十位
-		tv_hour_unit.setText(hour_unit + ""); //个位
+		tv_hour_decade.setText(hour_decade + "");
+		tv_hour_unit.setText(hour_unit + "");
 		tv_min_decade.setText(min_decade + "");
 		tv_min_unit.setText(min_unit + "");
 		tv_sec_decade.setText(sec_decade + "");
 		tv_sec_unit.setText(sec_unit + "");
-
 	}
 
-
 	/**
-	 * 开始倒计时
+	 * 开始累计时
 	 */
 	public void start() {
 		if (timer == null) {
@@ -195,7 +194,7 @@ public class CountDownTimerView extends LinearLayout {
 
 
 	/**
-	 * 停止倒计时
+	 * 停止累计时
 	 */
 	public void stop() {
 		if (timer != null) {
@@ -206,13 +205,12 @@ public class CountDownTimerView extends LinearLayout {
 
 
 	/**
-	 * 获取倒计时停止时候的时间
-	 * @return  返回的时间格式：20:10:40
+	 * 获取停止时候的时间
+	 * @return 返回格式：20:10:40
 	 */
 	public String getTime(){
 		return tv_hour_decade.getText().toString() + tv_hour_unit.getText().toString() + ":" +
 				tv_min_decade.getText().toString() + tv_min_unit.getText().toString() + ":" +
 				tv_sec_decade.getText().toString() + tv_sec_unit.getText().toString();
 	}
-
 }

@@ -124,4 +124,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"/>
 
+
+    <!--自定义累计时控件-->
+    <wzp.libs.widget.time.CountUpTimerView
+        android:id="@+id/countup_timer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"/>
+
 </LinearLayout>

@@ -3,10 +3,8 @@ package wzp.kits.use.widget;
 
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -16,13 +14,13 @@ import java.util.Date;
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
-import wzp.libs.utils.LogUtils;
 import wzp.libs.utils.ScreenUtils;
 import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.CalendarView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
 import wzp.libs.widget.time.CountDownTimerView;
+import wzp.libs.widget.time.CountUpTimerView;
 
 
 /**
@@ -55,6 +53,11 @@ public class WidgetUseActivity extends BaseActivity {
     @BindView(R.id.countdown_timer_view)
     CountDownTimerView countdown_timer_view;
 
+    /** 自定义累计时控件 */
+    @BindView(R.id.countup_timer_view)
+    CountUpTimerView countup_timer_view;
+
+
     @Override
     protected int getLayout() {
         return R.layout.activity_widget_use;
@@ -80,10 +83,15 @@ public class WidgetUseActivity extends BaseActivity {
         datas.add(21);
         calendar_view.setData(datas);
 
-        countdown_timer_view.setLayout(R.layout.countdowntimer_view); //设置显示的布局文件，注意：布局中的id不能更改
+        countdown_timer_view.setLayout(R.layout.counttimer_view); //设置显示的布局文件，注意：布局中的id不能更改
         countdown_timer_view.setTime(20,10,50); //设置开始倒计时的时间节点
         countdown_timer_view.start();
+
+        countup_timer_view.setLayout(R.layout.counttimer_view);//设置显示的布局文件，注意：布局中的id不能更改
+        countup_timer_view.setTime(00,00,00);
+        countup_timer_view.start();
     }
+
 
     @Override
     protected void initListener() {
