@@ -17,4 +17,5 @@
         <item name="android:windowSoftInputMode">adjustPan</item>
         <item name="android:windowBackground">@drawable/dialog_transparent</item> <!-- 背景 -->
     </style>
+
 </resources>

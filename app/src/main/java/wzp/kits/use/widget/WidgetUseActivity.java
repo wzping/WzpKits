@@ -3,10 +3,11 @@ package wzp.kits.use.widget;
 
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.CalendarView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
+import wzp.libs.widget.time.CountDownTimerView;
 
 
 /**
@@ -49,6 +51,10 @@ public class WidgetUseActivity extends BaseActivity {
     CalendarView calendar_view;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); //格式化日期
 
+    /** 自定义倒计时控件 */
+    @BindView(R.id.countdown_timer_view)
+    CountDownTimerView countdown_timer_view;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_widget_use;
@@ -64,7 +70,6 @@ public class WidgetUseActivity extends BaseActivity {
         calendar_center_tv.setText(calendar_view.getCurrentYear()+"年"+calendar_view.getCurrentMonth()+"月");
         calendar_view.setCalendarWidth(getResources().getDisplayMetrics().widthPixels - ScreenUtils.dipConvertPx(mContext,30));
         calendar_view.setCalendarHeight(getResources().getDisplayMetrics().heightPixels*3/10);
-
         calendar_view.setCircleTextColor(Color.WHITE);
         calendar_view.setCircleCellColor(getResources().getColor(R.color.colorPrimaryDark));
         calendar_view.setCircleCellStyle(Paint.Style.FILL);
@@ -74,6 +79,10 @@ public class WidgetUseActivity extends BaseActivity {
         datas.add(18);
         datas.add(21);
         calendar_view.setData(datas);
+
+        countdown_timer_view.setLayout(R.layout.countdowntimer_view); //设置显示的布局文件，注意：布局中的id不能更改
+        countdown_timer_view.setTime(20,10,50); //设置开始倒计时的时间节点
+        countdown_timer_view.start();
     }
 
     @Override

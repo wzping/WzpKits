@@ -87,4 +87,5 @@
         <attr name="circleCellColor" format="color"/> <!-- 需要圈出的日期集合的文字的背景圈颜色-->
 
     </declare-styleable>
+
 </resources>

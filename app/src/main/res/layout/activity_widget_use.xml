@@ -117,4 +117,11 @@
         app:weekTextColor="@color/black_42" />
 
 
+    <!--自定义倒计时控件-->
+    <wzp.libs.widget.time.CountDownTimerView
+        android:id="@+id/countdown_timer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"/>
+
 </LinearLayout>
