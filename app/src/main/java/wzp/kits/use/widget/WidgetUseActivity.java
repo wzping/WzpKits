@@ -19,7 +19,7 @@ import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.CalendarView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
-import wzp.libs.widget.dialog.BaseSureDialog;
+import wzp.libs.widget.dialog.ShowOperateDialog;
 import wzp.libs.widget.time.CountDownTimerView;
 import wzp.libs.widget.time.CountUpTimerView;
 
@@ -61,7 +61,7 @@ public class WidgetUseActivity extends BaseActivity {
     /** 第一种弹窗样式 */
     @BindView(R.id.base_dialog1)
     TextView base_dialog1;
-    private BaseSureDialog baseSureDialog;
+    private ShowOperateDialog baseSureDialog;
 
 
     @Override
@@ -97,7 +97,7 @@ public class WidgetUseActivity extends BaseActivity {
         countup_timer_view.setTime(00,00,00);
         countup_timer_view.start();
 
-        baseSureDialog = new BaseSureDialog(mContext,R.layout.dialog_base_sure_style); //布局中的元素个数和控件id不能更改
+        baseSureDialog = new ShowOperateDialog(mContext,R.layout.dialog_show_operate_style); //布局中的元素个数和控件id不能更改
     }
 
 
@@ -162,7 +162,7 @@ public class WidgetUseActivity extends BaseActivity {
                 baseSureDialog.showDialog("温馨提示","如需保存现有答题进度，" +"\n" +  "请点击保存后再关闭答卷");
             }
         });
-        baseSureDialog.setOnSureClickListener(new BaseSureDialog.OnSureClickListener() {
+        baseSureDialog.setOnSureClickListener(new ShowOperateDialog.OnSureClickListener() {
             @Override
             public void onSureClick() {
                 ToastUtils.showToast(mContext,"点击了确定");

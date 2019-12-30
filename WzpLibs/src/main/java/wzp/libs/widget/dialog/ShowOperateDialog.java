@@ -16,7 +16,7 @@ import wzp.libs.R;
  * 展示操作Dialog
  * (上面显示要展示的内容，下面确认按钮)
  */
-public class BaseSureDialog extends Dialog implements View.OnClickListener {
+public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 	private Context mContext;
 	//=============  控件  =========
 	/** 操作提示 */
@@ -37,14 +37,14 @@ public class BaseSureDialog extends Dialog implements View.OnClickListener {
 	/**
 	 * 初始化构造函数
 	 */
-	public BaseSureDialog(Context mContext) {
+	public ShowOperateDialog(Context mContext) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
 
-		setLayout(R.layout.dialog_base_sure);
+		setLayout(R.layout.dialog_show_operate);
 	}
 
-	public BaseSureDialog(Context mContext,int layout) {
+	public ShowOperateDialog(Context mContext, int layout) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
 		this.layout = layout;
@@ -57,7 +57,7 @@ public class BaseSureDialog extends Dialog implements View.OnClickListener {
 		setContentView(layout);
 
 		// 设置宽度,高度以及显示的位置
-		Window window = BaseSureDialog.this.getWindow();
+		Window window = ShowOperateDialog.this.getWindow();
 		window.setGravity(Gravity.CENTER);
 		WindowManager.LayoutParams lParams = window.getAttributes();
 		lParams.width = (int)(((Activity)mContext).getWindowManager().getDefaultDisplay().getWidth() * 0.7) ;
