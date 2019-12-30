@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_shape_white"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/sure_dialog_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/operate_notice"
+        android:textColor="@color/black_42"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/sure_dialog_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出前请先保存"
+        android:textColor="@color/black_42"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"/>
+
+    <ImageView
+        android:id="@+id/sure_dialog_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_f1" />
+
+    <TextView
+        android:id="@+id/sure_dialog_sure"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/sure"
+        android:textColor="@color/black_42"
+        android:textSize="16sp"
+        android:gravity="center"/>
+</LinearLayout>

@@ -1,135 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="15dp">
+    >
 
-    <!--单行显示TextView-->
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
 
+        <!--单行显示TextView-->
 
-        <wzp.libs.widget.LineTextView
-            android:id="@+id/line_text_view"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5.0dip"
-            android:layout_toLeftOf="@+id/iv_switch_line"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:singleLine="false"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
-
-        <!--android:ellipsize="end"  省略号显示在结尾-->
-
-        <ImageView
-            android:id="@+id/iv_switch_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/selector_ic_more"
-            android:visibility="invisible" />
-    </RelativeLayout>
+            android:layout_height="wrap_content">
 
 
-    <!--自定义圆环进度-->
-    <wzp.libs.widget.RoundProgressBar
-        android:id="@+id/round_progress_bar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="15dp"
-        app:max="100"
-        app:percentIsDisplayable="false"
-        app:roundColor="@color/gray_DC"
-        app:roundProgressColor="@color/colorPrimary"
-        app:roundProgressWidth="7dp"
-        app:roundWidth="4dp"
-        app:style="STROKE"
-        app:textIsDisplayable="true"
-        app:tvColor="@color/colorPrimary"
-        app:tvSize="16sp" />
+            <wzp.libs.widget.LineTextView
+                android:id="@+id/line_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5.0dip"
+                android:layout_toLeftOf="@+id/iv_switch_line"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
 
-    <!--roundColor 圆环默认显示颜色(默认红色) -->
-    <!--roundProgressColor 圆环进度条颜色（默认绿色） -->
-    <!--max 进度最大值（默认100） -->
-    <!--tvColor 进度文字显示颜色（默认绿色） -->
-    <!--tvSize 进度字体显示大小（默认15） -->
-    <!--textIsDisplayable 进度文字是否显示（默认是显示的） -->
-    <!--percentIsDisplayable %是否展示（默认是显示的） -->
-    <!--style STROKE-圆环样式(默认)  FILL（饼状样式）-->
-    <!--roundWidth 圆环默认宽度（默认5） -->
-    <!--roundProgressWidth 圆环进度宽度（默认5） -->
+            <!--android:ellipsize="end"  省略号显示在结尾-->
 
-    <!--【 注意：设置的时候，圆环进度的宽度roundProgressWidth不能小于圆环的宽度roundWidth,否则显示会有问题】-->
+            <ImageView
+                android:id="@+id/iv_switch_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/selector_ic_more"
+                android:visibility="invisible" />
+        </RelativeLayout>
 
 
-    <!--自定义日历控件-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorPrimaryDark">
+        <!--自定义圆环进度-->
+        <wzp.libs.widget.RoundProgressBar
+            android:id="@+id/round_progress_bar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="15dp"
+            app:max="100"
+            app:percentIsDisplayable="false"
+            app:roundColor="@color/gray_DC"
+            app:roundProgressColor="@color/colorPrimary"
+            app:roundProgressWidth="7dp"
+            app:roundWidth="4dp"
+            app:style="STROKE"
+            app:textIsDisplayable="true"
+            app:tvColor="@color/colorPrimary"
+            app:tvSize="16sp" />
 
-        <ImageView
-            android:id="@+id/calendar_left_arrow"
-            android:layout_width="40dp"
+        <!--roundColor 圆环默认显示颜色(默认红色) -->
+        <!--roundProgressColor 圆环进度条颜色（默认绿色） -->
+        <!--max 进度最大值（默认100） -->
+        <!--tvColor 进度文字显示颜色（默认绿色） -->
+        <!--tvSize 进度字体显示大小（默认15） -->
+        <!--textIsDisplayable 进度文字是否显示（默认是显示的） -->
+        <!--percentIsDisplayable %是否展示（默认是显示的） -->
+        <!--style STROKE-圆环样式(默认)  FILL（饼状样式）-->
+        <!--roundWidth 圆环默认宽度（默认5） -->
+        <!--roundProgressWidth 圆环进度宽度（默认5） -->
+
+        <!--【 注意：设置的时候，圆环进度的宽度roundProgressWidth不能小于圆环的宽度roundWidth,否则显示会有问题】-->
+
+
+        <!--自定义日历控件-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorPrimaryDark">
+
+            <ImageView
+                android:id="@+id/calendar_left_arrow"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:src="@drawable/ic_left_arrow_black" />
+
+            <TextView
+                android:id="@+id/calendar_center_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text=" 月 日"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/calendar_right_arrow"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_right_arrow_black" />
+        </RelativeLayout>
+
+        <wzp.libs.widget.CalendarView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            android:src="@drawable/ic_left_arrow_black" />
+            android:background="@color/white"
+            app:cellDownColor="@color/colorPrimaryDark"
+            app:lineColor="@color/colorPrimaryDark"
+            app:numberCellWidth="2dp"
+            app:otherDateColor="@color/gray_DC"
+            app:todayNumberCellColor="@color/colorPrimaryDark"
+            app:todayNumberColor="@color/colorPrimaryDark"
+            app:validTextColor="@color/black_42"
+            app:weekTextColor="@color/black_42" />
 
-        <TextView
-            android:id="@+id/calendar_center_tv"
+
+        <!--自定义倒计时控件-->
+        <wzp.libs.widget.time.CountDownTimerView
+            android:id="@+id/countdown_timer_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text=" 月 日"
+            android:layout_marginTop="15dp" />
+
+
+        <!--自定义累计时控件-->
+        <wzp.libs.widget.time.CountUpTimerView
+            android:id="@+id/countup_timer_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp" />
+
+        <!--自定义弹窗显示-->
+        <TextView
+            android:id="@+id/base_dialog1"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="弹窗样式1"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <ImageView
-            android:id="@+id/calendar_right_arrow"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:padding="8dp"
-            android:src="@drawable/ic_right_arrow_black" />
-    </RelativeLayout>
-
-    <wzp.libs.widget.CalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        app:cellDownColor="@color/colorPrimaryDark"
-        app:lineColor="@color/colorPrimaryDark"
-        app:numberCellWidth="2dp"
-        app:otherDateColor="@color/gray_DC"
-        app:todayNumberCellColor="@color/colorPrimaryDark"
-        app:todayNumberColor="@color/colorPrimaryDark"
-        app:validTextColor="@color/black_42"
-        app:weekTextColor="@color/black_42" />
-
-
-    <!--自定义倒计时控件-->
-    <wzp.libs.widget.time.CountDownTimerView
-        android:id="@+id/countdown_timer_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"/>
-
-
-    <!--自定义累计时控件-->
-    <wzp.libs.widget.time.CountUpTimerView
-        android:id="@+id/countup_timer_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"/>
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

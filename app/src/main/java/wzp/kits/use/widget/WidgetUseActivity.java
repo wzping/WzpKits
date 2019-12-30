@@ -19,6 +19,7 @@ import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.CalendarView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
+import wzp.libs.widget.dialog.BaseSureDialog;
 import wzp.libs.widget.time.CountDownTimerView;
 import wzp.libs.widget.time.CountUpTimerView;
 
@@ -57,6 +58,11 @@ public class WidgetUseActivity extends BaseActivity {
     @BindView(R.id.countup_timer_view)
     CountUpTimerView countup_timer_view;
 
+    /** 第一种弹窗样式 */
+    @BindView(R.id.base_dialog1)
+    TextView base_dialog1;
+    private BaseSureDialog baseSureDialog;
+
 
     @Override
     protected int getLayout() {
@@ -83,13 +89,15 @@ public class WidgetUseActivity extends BaseActivity {
         datas.add(21);
         calendar_view.setData(datas);
 
-        countdown_timer_view.setLayout(R.layout.counttimer_view); //设置显示的布局文件，注意：布局中的id不能更改
+        countdown_timer_view.setLayout(R.layout.view_counttimer_style); //设置显示的布局文件，注意：布局中的id不能更改
         countdown_timer_view.setTime(20,10,50); //设置开始倒计时的时间节点
         countdown_timer_view.start();
 
-        countup_timer_view.setLayout(R.layout.counttimer_view);//设置显示的布局文件，注意：布局中的id不能更改
+        countup_timer_view.setLayout(R.layout.view_counttimer_style);//设置显示的布局文件，注意：布局中的id不能更改
         countup_timer_view.setTime(00,00,00);
         countup_timer_view.start();
+
+        baseSureDialog = new BaseSureDialog(mContext,R.layout.dialog_base_sure_style); //布局中的元素个数和控件id不能更改
     }
 
 
@@ -143,6 +151,21 @@ public class WidgetUseActivity extends BaseActivity {
                 }else{ //单选，点击只选择一个
                     ToastUtils.showToast(mContext,simpleDateFormat.format(downDate));
                 }
+            }
+        });
+
+
+        //展示第一种弹窗样式
+        base_dialog1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                baseSureDialog.showDialog("温馨提示","如需保存现有答题进度，" +"\n" +  "请点击保存后再关闭答卷");
+            }
+        });
+        baseSureDialog.setOnSureClickListener(new BaseSureDialog.OnSureClickListener() {
+            @Override
+            public void onSureClick() {
+                ToastUtils.showToast(mContext,"点击了确定");
             }
         });
     }

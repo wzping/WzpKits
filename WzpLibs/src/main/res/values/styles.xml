@@ -10,8 +10,6 @@
         <item name="android:windowIsFloating">true</item> <!-- 是否浮现在Activity上面 -->
         <item name="android:windowIsTranslucent">true</item> <!-- 半透明 -->
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:textSize">16.0sp</item> <!-- 字体大小 -->
-        <item name="android:textColor">#ff555555</item> <!-- 字体颜色 -->
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item> <!-- 动画样式 -->
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
