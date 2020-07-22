@@ -249,6 +249,12 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public RvBaseViewHolder setProgress(int viewId, int progress) {
+        ProgressBar view = getView(viewId);
+        view.setProgress(progress);
+        return this;
+    }
+
     /********************************** ImageView 相关函数 *****************************************/
 
     public RvBaseViewHolder setImageResource(int viewId, int imageResId) {
