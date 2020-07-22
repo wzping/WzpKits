@@ -39,6 +39,4 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'  //这里要用4.5.0，高版本慎用，会有崩溃
     //WzpLib
     implementation project(path: ':WzpLibs')
-
-
 }
