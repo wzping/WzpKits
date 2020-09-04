@@ -2,6 +2,7 @@ package wzp.libs.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -99,10 +100,16 @@ public class MultiChooseOperateDialog extends Dialog implements View.OnClickList
 
 
 	private static class MultiChooseOperateParam{
+		//设置第一种选择操作显示文字
+		String operateOneStr;
+		//设置第二种选择操作显示文字
+		String operateTwoStr;
+		//文字取消
+		String operateCancelStr;
 		//点击弹窗外部，是否可以取消弹窗(默认可以取消)
-		boolean enableCancel;
+		boolean enableCancel = true;
 		//第一种选项和第二种选项的点击事件
-		OnChooseClickListener onChoiceClickListener;
+		OnChooseClickListener onChooseClickListener;
 	}
 
 	public static class Builder{
@@ -115,22 +122,41 @@ public class MultiChooseOperateDialog extends Dialog implements View.OnClickList
 			multiChooseOperateParam = new MultiChooseOperateParam();
 		}
 
+		//设置显示文字
+		public Builder setShowOperateTvOne(String str){
+			multiChooseOperateParam.operateOneStr = str;
+			return this;
+		}
+
+		public Builder setShowOperateTvTwo(String str){
+			multiChooseOperateParam.operateTwoStr = str;
+			return this;
+		}
+
+		public Builder setShowOperateCancel(String str){
+			multiChooseOperateParam.operateCancelStr = str;
+			return this;
+		}
+
 		public Builder enableCanceledOnTouchOutside(boolean enableCancel) {
 			multiChooseOperateParam.enableCancel = enableCancel;
 			return this;
 		}
 
 		public Builder setOnChooseClickListener(OnChooseClickListener listener) {
-			multiChooseOperateParam.onChoiceClickListener = listener;
+			multiChooseOperateParam.onChooseClickListener = listener;
 			return this;
 		}
 
 		public MultiChooseOperateDialog create(){
 			MultiChooseOperateDialog multiChooseOperateDialog = new MultiChooseOperateDialog(mContext);
 
-			//点击事件处理
-			multiChooseOperateDialog.setOnChooseClickListener(multiChooseOperateParam.onChoiceClickListener);
+			multiChooseOperateDialog.setShowOperateTvOne(multiChooseOperateParam.operateOneStr);
+			multiChooseOperateDialog.setShowOperateTvTwo(multiChooseOperateParam.operateTwoStr);
+			multiChooseOperateDialog.setShowOperateCancel(multiChooseOperateParam.operateCancelStr);
 			multiChooseOperateDialog.enableCanceledOnTouchOutside(multiChooseOperateParam.enableCancel);
+			multiChooseOperateDialog.setOnChooseClickListener(multiChooseOperateParam.onChooseClickListener);//点击事件处理
+
 
 			this.multiChooseOperateDialog = multiChooseOperateDialog;
 			return multiChooseOperateDialog;
@@ -139,13 +165,42 @@ public class MultiChooseOperateDialog extends Dialog implements View.OnClickList
 		public MultiChooseOperateDialog create(int layout){
 			MultiChooseOperateDialog multiChooseOperateDialog = new MultiChooseOperateDialog(mContext,layout);
 
-			//点击事件处理
-			multiChooseOperateDialog.setOnChooseClickListener(multiChooseOperateParam.onChoiceClickListener);
+			multiChooseOperateDialog.setShowOperateTvOne(multiChooseOperateParam.operateOneStr);
+			multiChooseOperateDialog.setShowOperateTvTwo(multiChooseOperateParam.operateTwoStr);
+			multiChooseOperateDialog.setShowOperateCancel(multiChooseOperateParam.operateCancelStr);
 			multiChooseOperateDialog.enableCanceledOnTouchOutside(multiChooseOperateParam.enableCancel);
+			multiChooseOperateDialog.setOnChooseClickListener(multiChooseOperateParam.onChooseClickListener);	//点击事件处理
 
 			this.multiChooseOperateDialog = multiChooseOperateDialog;
 			return multiChooseOperateDialog;
 		}
+	}
+
+	/**
+	 * 设置显示文字
+	 * @param str
+	 */
+	private void setShowOperateTvOne(String str){
+		if (!TextUtils.isEmpty(str))
+			choose_one_tv.setText(str);
+	}
+
+	private void setShowOperateTvTwo(String str){
+		if (!TextUtils.isEmpty(str))
+			choose_two_tv.setText(str);
+	}
+
+	private void setShowOperateCancel(String str){
+		if (!TextUtils.isEmpty(str))
+			choose_cancel.setText(str);
+	}
+
+	/**
+	 * 点击弹窗外部，是否可以取消弹窗
+	 * @param enableCancel true：可以取消(默认可以取消)   false：不可以取消
+	 */
+	public void enableCanceledOnTouchOutside(boolean enableCancel){
+		setCanceledOnTouchOutside(enableCancel);
 	}
 
 	public interface OnChooseClickListener {
@@ -171,13 +226,5 @@ public class MultiChooseOperateDialog extends Dialog implements View.OnClickList
 				}
 			}
 		});
-	}
-
-	/**
-	 * 点击弹窗外部，是否可以取消弹窗
-	 * @param enableCancel true：可以取消(默认可以取消)   false：不可以取消
-	 */
-	public void enableCanceledOnTouchOutside(boolean enableCancel){
-		setCanceledOnTouchOutside(enableCancel);
 	}
 }

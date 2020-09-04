@@ -146,7 +146,6 @@ public class WidgetUseActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 new MultiChooseOperateDialog.Builder(mContext)
-                        .enableCanceledOnTouchOutside(true)
                         .setOnChooseClickListener(new MultiChooseOperateDialog.OnChooseClickListener() {
                             @Override
                             public void onChooseClick(int choice) {
