@@ -22,16 +22,37 @@
             android:textSize="16sp" />
 
         <!--自定义弹窗显示-->
-        <TextView
-            android:id="@+id/style_dialog_tv1"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:text="弹窗样式1"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/style_dialog_tv1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:text="弹窗样式1"
+                android:layout_marginRight="2dp"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/style_dialog_tv2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:text="弹窗样式2"
+                android:layout_marginLeft="2dp"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
 
         <!--单行显示TextView-->
 

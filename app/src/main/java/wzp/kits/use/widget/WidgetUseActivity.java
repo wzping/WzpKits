@@ -23,6 +23,7 @@ import wzp.libs.widget.HexagonView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
 import wzp.libs.widget.dialog.AppLoadingDialog;
+import wzp.libs.widget.dialog.MultiChooseOperateDialog;
 import wzp.libs.widget.dialog.ShowOperateDialog;
 import wzp.libs.widget.time.CountDownTimerView;
 import wzp.libs.widget.time.CountUpTimerView;
@@ -41,6 +42,10 @@ public class WidgetUseActivity extends BaseActivity {
     @BindView(R.id.style_dialog_tv1)
     TextView style_dialog_tv1;
     private ShowOperateDialog showOperateDialog;
+    /** 第二种弹窗样式 */
+    @BindView(R.id.style_dialog_tv2)
+    TextView style_dialog_tv2;
+
 
     /** 单行显示TextView，可切换收起展开状态 */
     @BindView(R.id.line_text_view)
@@ -134,6 +139,25 @@ public class WidgetUseActivity extends BaseActivity {
             @Override
             public void onSureClick() {
                 ToastUtils.showToast(mContext,"点击了确定");
+            }
+        });
+
+        style_dialog_tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MultiChooseOperateDialog.Builder(mContext)
+                        .enableCanceledOnTouchOutside(true)
+                        .setOnChooseClickListener(new MultiChooseOperateDialog.OnChooseClickListener() {
+                            @Override
+                            public void onChooseClick(int choice) {
+                                if (choice == MultiChooseOperateDialog.CHOICE_ONE){
+                                    ToastUtils.showToast(mContext,"拍照");
+                                }else if (choice == MultiChooseOperateDialog.CHOICE_TWO){
+                                    ToastUtils.showToast(mContext,"从相册中选择");
+                                }
+                            }
+                        })
+                        .create(R.layout.dialog_multi_choose_operate_style).showDialog();
             }
         });
 
