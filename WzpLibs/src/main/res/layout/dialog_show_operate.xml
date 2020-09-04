@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/sure_dialog_text"
+        android:id="@+id/show_operate_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/operate_notice"
@@ -18,7 +18,7 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/sure_dialog_notice"
+        android:id="@+id/show_operate_notice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="退出前请先保存"
@@ -29,13 +29,13 @@
         android:paddingBottom="20dp"/>
 
     <ImageView
-        android:id="@+id/sure_dialog_line"
+        android:id="@+id/show_operate_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray_f1" />
 
     <TextView
-        android:id="@+id/sure_dialog_sure"
+        android:id="@+id/show_operate_sure"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="@string/sure"

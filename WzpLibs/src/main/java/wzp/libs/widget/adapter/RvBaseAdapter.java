@@ -11,7 +11,14 @@ import java.util.List;
 
 /**
  * RecyclerView的adapter的基类
- * @param <T>
+ * 使用示例：
+ * private RvBaseAdapter<DemoBean> adapter = new RvBaseAdapter<>(R.layout.xxx , new RvBaseAdapter.OnBindViewListener<DemoBean>() {
+ *         @Override
+ *         public void onBindView(RvBaseViewHolder holder, DemoBean bean, int position) {
+ *             holder.setText(R.id.xxx ,bean.getText());
+ *                  .setTextColor(R.id.xxx ,bean.getColor());
+ *         }
+ *     });
  */
 public class RvBaseAdapter<T> extends RecyclerView.Adapter<RvBaseViewHolder> {
 

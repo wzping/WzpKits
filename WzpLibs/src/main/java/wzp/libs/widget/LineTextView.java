@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 /**
- * 单行显示TextView，可切换收起展开状态
+ * 只有一行的话就展示一行并且不显示换行图标，当文字大于1行的时候，末尾用...表示，并且显示出换行图标
  */
 @SuppressLint("AppCompatCustomView")
 public class LineTextView extends TextView {

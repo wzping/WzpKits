@@ -20,19 +20,17 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 	private Context mContext;
 	//=============  控件  =========
 	/** 操作提示 */
-	private TextView sure_dialog_text;
+	private TextView show_operate_title;
 	/** 提示文字 */
-	private TextView sure_dialog_notice;
+	private TextView show_operate_notice;
 	/** 中间的那根横线 */
-	private ImageView sure_dialog_line;
+	private ImageView show_operate_line;
 	/** 具体操作 */
-	private TextView sure_dialog_sure;
+	private TextView show_operate_sure;
 	//操作提示
 	private String text;
 	//提示文字
 	private String notice;
-	//自定义的布局文件
-	private int layout;
 
 	/**
 	 * 初始化构造函数
@@ -47,7 +45,6 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 	public ShowOperateDialog(Context mContext, int layout) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
-		this.layout = layout;
 		setLayout(layout);
 	}
 
@@ -64,14 +61,14 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 
 		// ==------------------------------------------==
 
-		sure_dialog_text =  this.findViewById(R.id.sure_dialog_text);
-		sure_dialog_notice =  this.findViewById(R.id.sure_dialog_notice);
-		sure_dialog_line =  this.findViewById(R.id.sure_dialog_line);
-		sure_dialog_sure =  this.findViewById(R.id.sure_dialog_sure);
+		show_operate_title =  this.findViewById(R.id.show_operate_title);
+		show_operate_notice =  this.findViewById(R.id.show_operate_notice);
+		show_operate_line =  this.findViewById(R.id.show_operate_line);
+		show_operate_sure =  this.findViewById(R.id.show_operate_sure);
 
-		text = sure_dialog_text.getText().toString();
+		text = show_operate_title.getText().toString();
 
-		sure_dialog_sure.setOnClickListener(this);
+		show_operate_sure.setOnClickListener(this);
 	}
 
 	/**
@@ -101,8 +98,8 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 		// 显示
 		super.show();
 
-		sure_dialog_text.setText(text);
-		sure_dialog_notice.setText(notice);
+		show_operate_title.setText(text);
+		show_operate_notice.setText(notice);
 	}
 
 	/**
@@ -117,7 +114,7 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
-		if (id==R.id.sure_dialog_sure){
+		if (id==R.id.show_operate_sure){
 			cancelDialog();
 			if(mOnSureClickListener!=null){
 				mOnSureClickListener.onSureClick();
@@ -138,11 +135,11 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 	}
 
 	/**
-	 * 设置"操作提醒"是否可见
+	 * 设置"温馨提示"是否可见
 	 * @param visible
 	 */
 	public void setTextVisible(int visible){
-		sure_dialog_text.setVisibility(visible);
+		show_operate_title.setVisibility(visible);
 	}
 
 

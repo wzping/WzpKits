@@ -16,9 +16,13 @@ import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.utils.ScreenUtils;
 import wzp.libs.utils.ToastUtils;
+import wzp.libs.utils.image.ImageConvertUtils;
 import wzp.libs.widget.CalendarView;
+import wzp.libs.widget.CircleImageView;
+import wzp.libs.widget.HexagonView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
+import wzp.libs.widget.dialog.AppLoadingDialog;
 import wzp.libs.widget.dialog.ShowOperateDialog;
 import wzp.libs.widget.time.CountDownTimerView;
 import wzp.libs.widget.time.CountUpTimerView;
@@ -28,6 +32,15 @@ import wzp.libs.widget.time.CountUpTimerView;
  * Widget库的使用示例
  */
 public class WidgetUseActivity extends BaseActivity {
+    /** app加载圈 */
+    @BindView(R.id.loading_dialog)
+    TextView loading_dialog;
+    private AppLoadingDialog appLoadingDialog;
+
+    /** 第一种弹窗样式 */
+    @BindView(R.id.style_dialog_tv1)
+    TextView style_dialog_tv1;
+    private ShowOperateDialog showOperateDialog;
 
     /** 单行显示TextView，可切换收起展开状态 */
     @BindView(R.id.line_text_view)
@@ -58,11 +71,9 @@ public class WidgetUseActivity extends BaseActivity {
     @BindView(R.id.countup_timer_view)
     CountUpTimerView countup_timer_view;
 
-    /** 第一种弹窗样式 */
-    @BindView(R.id.base_dialog1)
-    TextView base_dialog1;
-    private ShowOperateDialog baseSureDialog;
-
+    /** 圆形控件 */
+    @BindView(R.id.circle_imageview)
+    CircleImageView circle_imageview;
 
     @Override
     protected int getLayout() {
@@ -71,6 +82,9 @@ public class WidgetUseActivity extends BaseActivity {
 
     @Override
     protected void initValues() {
+        appLoadingDialog = new AppLoadingDialog(mContext);
+        showOperateDialog = new ShowOperateDialog(mContext,R.layout.dialog_show_operate_style); //布局中的元素个数和控件id不能更改
+
         String name = "张三,李四,王五,赵六,钱七,二麻子,狗柱子,牛蛋,翠花，西湾子，狗剩，还有啥，哈哈,赖皮蛤蟆,哇哇兔，莉莉，也不知道够不够两行了";
         line_text_view.setText(name);
 
@@ -87,7 +101,7 @@ public class WidgetUseActivity extends BaseActivity {
         datas.add(8);
         datas.add(18);
         datas.add(21);
-        calendar_view.setData(datas);
+        calendar_view.setData(datas); //设置需要圈出的日期
 
         countdown_timer_view.setLayout(R.layout.view_counttimer_style); //设置显示的布局文件，注意：布局中的id不能更改
         countdown_timer_view.setTime(20,10,50); //设置开始倒计时的时间节点
@@ -97,12 +111,32 @@ public class WidgetUseActivity extends BaseActivity {
         countup_timer_view.setTime(00,00,00);
         countup_timer_view.start();
 
-        baseSureDialog = new ShowOperateDialog(mContext,R.layout.dialog_show_operate_style); //布局中的元素个数和控件id不能更改
     }
 
 
     @Override
     protected void initListener() {
+        loading_dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appLoadingDialog.showDialog();
+            }
+        });
+
+        //展示第一种弹窗样式
+        style_dialog_tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOperateDialog.showDialog("温馨提示","如需保存现有答题进度，" +"\n" +  "请点击保存后再关闭答卷");
+            }
+        });
+        showOperateDialog.setOnSureClickListener(new ShowOperateDialog.OnSureClickListener() {
+            @Override
+            public void onSureClick() {
+                ToastUtils.showToast(mContext,"点击了确定");
+            }
+        });
+
         line_text_view.setNewLineEvent(new LineTextView.OnNewLineCallBack() {
             @Override
             public void onNewLine() {
@@ -154,18 +188,10 @@ public class WidgetUseActivity extends BaseActivity {
             }
         });
 
-
-        //展示第一种弹窗样式
-        base_dialog1.setOnClickListener(new View.OnClickListener() {
+        circle_imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                baseSureDialog.showDialog("温馨提示","如需保存现有答题进度，" +"\n" +  "请点击保存后再关闭答卷");
-            }
-        });
-        baseSureDialog.setOnSureClickListener(new ShowOperateDialog.OnSureClickListener() {
-            @Override
-            public void onSureClick() {
-                ToastUtils.showToast(mContext,"点击了确定");
+                circle_imageview.setImageResource(R.drawable.cycle4);
             }
         });
     }

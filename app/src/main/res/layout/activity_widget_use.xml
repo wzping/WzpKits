@@ -2,8 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,11 +10,35 @@
         android:orientation="vertical"
         android:padding="15dp">
 
+        <!--app加载圈-->
+        <TextView
+            android:id="@+id/loading_dialog"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="app加载圈"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!--自定义弹窗显示-->
+        <TextView
+            android:id="@+id/style_dialog_tv1"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="弹窗样式1"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
         <!--单行显示TextView-->
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
 
 
             <wzp.libs.widget.LineTextView
@@ -137,17 +160,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp" />
 
-        <!--自定义弹窗显示-->
-        <TextView
-            android:id="@+id/base_dialog1"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:text="弹窗样式1"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <wzp.libs.widget.CircleImageView
+                android:id="@+id/circle_imageview"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:border_width="2dp"
+                app:border_color="@color/colorPrimaryDark"
+                android:src="@drawable/cycle3"/>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

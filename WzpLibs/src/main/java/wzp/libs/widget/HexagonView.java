@@ -300,7 +300,7 @@ public class HexagonView extends ImageView {
 
 	//========================= 对外公开方法 ==============================
 
-    public void setImageSrc(Bitmap bitmap){
+    public void setImageBitmap(Bitmap bitmap){
         this.bitmap = bitmap;
         postInvalidate();
     }

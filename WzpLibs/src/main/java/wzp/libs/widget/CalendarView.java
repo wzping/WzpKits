@@ -23,7 +23,6 @@ import wzp.libs.utils.ScreenUtils;
 /**
  * 自定义日历View
  * 以下注释均以 2017年11月19（当前系统时间）为准的
- * invalidate
  */
 public class CalendarView extends View implements View.OnTouchListener {
 	private final static String TAG = "CalendarView";

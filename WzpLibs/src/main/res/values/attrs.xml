@@ -4,8 +4,8 @@
 
     <!--自定义圆形图片控件-->
     <declare-styleable name="CircleImageView">
-        <attr name="border_width" format="dimension" />  <!--边框-->
-        <attr name="border_color" format="color" />  <!--颜色-->
+        <attr name="border_width" format="dimension" />  <!--边框宽度-->
+        <attr name="border_color" format="color" />  <!--边框颜色-->
     </declare-styleable>
 
 

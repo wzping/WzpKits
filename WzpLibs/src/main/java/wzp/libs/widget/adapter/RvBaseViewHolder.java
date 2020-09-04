@@ -82,6 +82,22 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
+    public RvBaseViewHolder setEnabled(int viewId, boolean enabled) {
+        View view = getView(viewId);
+        view.setEnabled(enabled);
+        return this;
+    }
+
+    public RvBaseViewHolder setEnabled(boolean enabled) {
+        itemView.setEnabled(enabled);
+        return this;
+    }
+
+    public boolean isEnabled(int viewId) {
+        return getView(viewId).isEnabled();
+    }
+
+
     public RvBaseViewHolder setBackgroundColor(int viewId, @ColorInt int color) {
         View view = getView(viewId);
         view.setBackgroundColor(color);
@@ -106,23 +122,6 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public RvBaseViewHolder setEnabled(int viewId, boolean enabled) {
-        View view = getView(viewId);
-        view.setEnabled(enabled);
-        return this;
-    }
-
-    public RvBaseViewHolder setEnabled(boolean enabled) {
-        itemView.setEnabled(enabled);
-        return this;
-    }
-
-    public boolean isEnabled(int viewId) {
-        return getView(viewId).isEnabled();
-    }
-
-
-
     /********************************** 常用监听 ****************************************/
 
     public RvBaseViewHolder setOnClickListener(int viewId, View.OnClickListener listener) {
@@ -131,23 +130,6 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public RvBaseViewHolder setOnTouchListener(int viewId, View.OnTouchListener listener) {
-        View view = getView(viewId);
-        view.setOnTouchListener(listener);
-        return this;
-    }
-
-    public RvBaseViewHolder setOnLongClickListener(int viewId, View.OnLongClickListener listener) {
-        View view = getView(viewId);
-        view.setOnLongClickListener(listener);
-        return this;
-    }
-
-    /**
-     * 设置 RecyclerView item 点击监听
-     * @param listener
-     * @return
-     */
     public RvBaseViewHolder setOnItemClickListener(View.OnClickListener listener) {
         itemView.setClickable(true);
         itemView.setOnClickListener(listener);
@@ -155,23 +137,30 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    public RvBaseViewHolder setOnTouchListener(int viewId, View.OnTouchListener listener) {
+        View view = getView(viewId);
+        view.setOnTouchListener(listener);
+        return this;
+    }
+
     public RvBaseViewHolder setOnItemTouchListener(View.OnTouchListener listener) {
         itemView.setOnTouchListener(listener);
         return this;
     }
 
-    /**
-     * 设置 RecyclerView item 长按监听
-     * @param listener
-     * @return
-     */
-    public RvBaseViewHolder onItenLongClickListener(View.OnLongClickListener listener) {
-        itemView.setLongClickable(true);
-        itemView.setOnLongClickListener(listener);
+
+    public RvBaseViewHolder setOnLongClickListener(int viewId, View.OnLongClickListener listener) {
+        View view = getView(viewId);
+        view.setOnLongClickListener(listener);
         return this;
     }
 
 
+    public RvBaseViewHolder setOnItemLongClickListener(View.OnLongClickListener listener) {
+        itemView.setLongClickable(true);
+        itemView.setOnLongClickListener(listener);
+        return this;
+    }
 
     /********************************** TextView 相关函数 ****************************************/
 
@@ -200,6 +189,7 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
     }
 
     //相当于设置drawableLeft、drawableTop、drawaleRight、drawableBottom
+    //例如：textview.setCompoundDrawablesWithIntrinsicBounds(null,mContext.getResources().getDrawable(R.drawable.pic) , null, null);
     public RvBaseViewHolder setTextDrawable(int viewId, Drawable left, Drawable top, Drawable right, Drawable bottom) {
         TextView textView = getView(viewId);
         textView.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
@@ -231,8 +221,8 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
     }
 
     public RvBaseViewHolder setChecked(int viewId, boolean checked) {
-        Checkable view = getView(viewId);
-        view.setChecked(checked);
+        CheckBox checkBox = getView(viewId);
+        checkBox.setChecked(checked);
         return this;
     }
 
@@ -288,6 +278,7 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    //只要加载的链接不变，就不会再重新加载了
     public RvBaseViewHolder setUrlImageList(Context context,int viewId, String imageUrl) {
         ImageView view = getView(viewId);
         GlideUtils.getInstance().loadPicList(context,imageUrl,view, R.drawable.ic_error1);
@@ -298,13 +289,6 @@ public class RvBaseViewHolder extends RecyclerView.ViewHolder {
     public RvBaseViewHolder setUrlImageList(Context context,int viewId, String imageUrl,int defaultPic) {
         ImageView view = getView(viewId);
         GlideUtils.getInstance().loadPicList(context,imageUrl,view,defaultPic);
-        return this;
-    }
-
-
-    public RvBaseViewHolder setUrlCircleImage(Context context,int viewId, String imageUrl,int defaultPic) {
-        CircleImageView view = getView(viewId);
-        GlideUtils.getInstance().loadPic(context,imageUrl,view,defaultPic);
         return this;
     }
 

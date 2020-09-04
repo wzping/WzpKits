@@ -6,7 +6,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-
 import wzp.libs.R;
 
 
@@ -21,7 +20,7 @@ public class AppLoadingDialog extends Dialog {
 	private AnimationDrawable animationDrawable;
 
 	/**
-	 * 初始化构造函数
+	 * 初始化构造函数(默认dialog_app_loading布局)
 	 */
 	public AppLoadingDialog(Context mContext) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
@@ -29,9 +28,33 @@ public class AppLoadingDialog extends Dialog {
 		this.mContext = mContext;
 
 		// 绑定Layout
-		this.setContentView(R.layout.dialog_app_loading);
+		setLayout(R.layout.dialog_app_loading);
+	}
+
+	/**
+	 * 初始化构造函数 可以自定义布局（但是自定义布局中的id要与这里设置的一致）
+	 */
+	public AppLoadingDialog(Context mContext,int layout) {
+		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		this.mContext = mContext;
+
+		// 绑定Layout
+		setLayout(layout);
+
+		setParams();
+
+	}
+
+	public void setLayout(int layout){
+		setContentView(layout);
+
 		app_iv_loading = (ImageView) this.findViewById(R.id.app_iv_loading);
-		// ==------------------------------------------==
+
+		setParams();
+	}
+
+	private void setParams(){
 		// 设置宽度,高度以及显示的位置
 		Window window = AppLoadingDialog.this.getWindow();
 		WindowManager.LayoutParams lParams = window.getAttributes();
@@ -44,6 +67,7 @@ public class AppLoadingDialog extends Dialog {
 		// 禁止点击其他地方自动关闭
 		this.setCanceledOnTouchOutside(false);
 	}
+
 
 	/**
 	 * 显示Dialog

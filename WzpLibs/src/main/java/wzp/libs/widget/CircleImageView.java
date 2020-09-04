@@ -43,9 +43,6 @@ public class CircleImageView extends ImageView {
     private final Paint mBitmapPaint = new Paint();
     private final Paint mBorderPaint = new Paint();
 
-    private int mBorderColor = DEFAULT_BORDER_COLOR;
-    private int mBorderWidth = DEFAULT_BORDER_WIDTH;
-
     private Bitmap mBitmap;
     private BitmapShader mBitmapShader;
     private int mBitmapWidth;
@@ -56,6 +53,14 @@ public class CircleImageView extends ImageView {
 
     private boolean mReady;
     private boolean mSetupPending;
+
+
+    //------------------ 代码和布局中均可以设置的属性----------------------
+    /** 边框宽度(默认没有边框) */
+    private int mBorderWidth = DEFAULT_BORDER_WIDTH;
+    /** 边框颜色（默认黑色）*/
+    private int mBorderColor = DEFAULT_BORDER_COLOR;
+
 
     public CircleImageView(Context context) {
         super(context);
