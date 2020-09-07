@@ -3,11 +3,11 @@ package wzp.libs.widget.dialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 import wzp.libs.R;
 
@@ -16,21 +16,15 @@ import wzp.libs.R;
  * 展示操作Dialog
  * (上面显示要展示的内容，下面确认按钮)
  */
-public class ShowOperateDialog extends Dialog implements View.OnClickListener {
+public class ShowOperateDialog extends Dialog{
 	private Context mContext;
 	//=============  控件  =========
 	/** 操作提示 */
-	private TextView show_operate_title;
-	/** 提示文字 */
 	private TextView show_operate_notice;
-	/** 中间的那根横线 */
-	private ImageView show_operate_line;
-	/** 具体操作 */
+	/** 提示文字 */
+	private TextView show_operate_content;
+	/** 具体操作 - 确定 */
 	private TextView show_operate_sure;
-	//操作提示
-	private String text;
-	//提示文字
-	private String notice;
 
 	/**
 	 * 初始化构造函数
@@ -58,37 +52,24 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 		window.setGravity(Gravity.CENTER);
 		WindowManager.LayoutParams lParams = window.getAttributes();
 		lParams.width = (int)(((Activity)mContext).getWindowManager().getDefaultDisplay().getWidth() * 0.7) ;
+		lParams.alpha = 1.0f;
 
 		// ==------------------------------------------==
 
-		show_operate_title =  this.findViewById(R.id.show_operate_title);
 		show_operate_notice =  this.findViewById(R.id.show_operate_notice);
-		show_operate_line =  this.findViewById(R.id.show_operate_line);
+		show_operate_content =  this.findViewById(R.id.show_operate_content);
 		show_operate_sure =  this.findViewById(R.id.show_operate_sure);
 
-		text = show_operate_title.getText().toString();
-
-		show_operate_sure.setOnClickListener(this);
 	}
 
 	/**
 	 * 显示Dialog
 	 */
-	public void showDialog(String notice){
-		this.notice = notice;
+	public void showDialog(){
 		// 显示Dialog
 		this.show();
 	}
 
-	/**
-	 * 显示Dialog
-	 */
-	public void showDialog(String text,String notice){
-		this.text = text;
-		this.notice = notice;
-		// 显示Dialog
-		this.show();
-	}
 
 	/**
 	 * 默认显示方法
@@ -98,8 +79,6 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 		// 显示
 		super.show();
 
-		show_operate_title.setText(text);
-		show_operate_notice.setText(notice);
 	}
 
 	/**
@@ -111,37 +90,100 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 		}
 	}
 
-	@Override
-	public void onClick(View v) {
-		int id = v.getId();
-		if (id==R.id.show_operate_sure){
-			cancelDialog();
-			if(mOnSureClickListener!=null){
-				mOnSureClickListener.onSureClick();
-			}
+	private static class ShowOperateParam{
+		//温馨提示 文字
+		String noticeStr;
+		//提示的具体内容
+		String contentStr;
+		//文字确定
+		String sureStr;
+		//点击弹窗外部，是否可以取消弹窗(默认可以取消)
+		boolean enableCancel = true;
+		//点击确定
+		OnSureClickListener onSureClickListener;
+	}
+
+	public static class Builder{
+		private Context mContext;
+		private ShowOperateParam showOperateParam;
+		private ShowOperateDialog showOperateDialog;
+
+		public Builder(Context mContext){
+			this.mContext = mContext;
+			showOperateParam = new ShowOperateParam();
+		}
+
+		public Builder setNoticeStr(String str){
+			showOperateParam.noticeStr = str;
+			return this;
+		}
+
+		public Builder setContentStr(String str){
+			showOperateParam.contentStr = str;
+			return this;
+		}
+
+		public Builder setSureStr(String str){
+			showOperateParam.sureStr = str;
+			return this;
+		}
+
+		public Builder enableCanceledOnTouchOutside(boolean enableCancel) {
+			showOperateParam.enableCancel = enableCancel;
+			return this;
+		}
+
+		public Builder setOnSureClickListener(OnSureClickListener listener) {
+			showOperateParam.onSureClickListener = listener;
+			return this;
+		}
+
+		public ShowOperateDialog create(){
+			ShowOperateDialog showOperateDialog = new ShowOperateDialog(mContext);
+
+			showOperateDialog.setNoticeStr(showOperateParam.noticeStr);
+			showOperateDialog.setContentStr(showOperateParam.contentStr);
+			showOperateDialog.setSureStr(showOperateParam.sureStr);
+			showOperateDialog.enableCanceledOnTouchOutside(showOperateParam.enableCancel);
+			showOperateDialog.setOnSureClickListener(showOperateParam.onSureClickListener);//点击事件处理
+
+
+			this.showOperateDialog = showOperateDialog;
+			return showOperateDialog;
+		}
+
+		public ShowOperateDialog create(int layout){
+			ShowOperateDialog showOperateDialog = new ShowOperateDialog(mContext,layout);
+
+			showOperateDialog.setNoticeStr(showOperateParam.noticeStr);
+			showOperateDialog.setContentStr(showOperateParam.contentStr);
+			showOperateDialog.setSureStr(showOperateParam.sureStr);
+			showOperateDialog.enableCanceledOnTouchOutside(showOperateParam.enableCancel);
+			showOperateDialog.setOnSureClickListener(showOperateParam.onSureClickListener);	//点击事件处理
+
+			this.showOperateDialog = showOperateDialog;
+			return showOperateDialog;
 		}
 	}
 
-
-	private OnSureClickListener mOnSureClickListener;
-
-
-	public interface OnSureClickListener {
-		void onSureClick();
-	}
-
-	public void setOnSureClickListener(OnSureClickListener mOnSureClickListener) {
-		this.mOnSureClickListener = mOnSureClickListener;
-	}
-
 	/**
-	 * 设置"温馨提示"是否可见
-	 * @param visible
+	 * 设置显示文字
+	 * @param str
 	 */
-	public void setTextVisible(int visible){
-		show_operate_title.setVisibility(visible);
+	private void setNoticeStr(String str){
+		if (!TextUtils.isEmpty(str))
+			show_operate_notice.setText(str);
 	}
 
+	private void setContentStr(String str){
+		if (!TextUtils.isEmpty(str))
+			show_operate_content.setText(str);
+	}
+
+	private void setSureStr(String str){
+		if (!TextUtils.isEmpty(str))
+			show_operate_sure.setText(str);
+	}
 
 	/**
 	 * 点击弹窗外部，是否可以取消弹窗
@@ -149,5 +191,21 @@ public class ShowOperateDialog extends Dialog implements View.OnClickListener {
 	 */
 	public void enableCanceledOnTouchOutside(boolean enableCancel){
 		setCanceledOnTouchOutside(enableCancel);
+	}
+
+	public interface OnSureClickListener {
+		void onSureClick();
+	}
+
+	private void setOnSureClickListener(final OnSureClickListener onSureClickListener) {
+		show_operate_sure.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				cancelDialog();
+				if (onSureClickListener != null) {
+					onSureClickListener.onSureClick();
+				}
+			}
+		});
 	}
 }

@@ -42,7 +42,6 @@ public class WidgetUseActivity extends BaseActivity {
     /** 第一种弹窗样式 */
     @BindView(R.id.style_dialog_tv1)
     TextView style_dialog_tv1;
-    private ShowOperateDialog showOperateDialog;
     /** 第二种弹窗样式 */
     @BindView(R.id.style_dialog_tv2)
     TextView style_dialog_tv2;
@@ -91,7 +90,6 @@ public class WidgetUseActivity extends BaseActivity {
     @Override
     protected void initValues() {
         appLoadingDialog = new AppLoadingDialog(mContext);
-        showOperateDialog = new ShowOperateDialog(mContext,R.layout.dialog_show_operate_style); //布局中的元素个数和控件id不能更改
 
         String name = "张三,李四,王五,赵六,钱七,二麻子,狗柱子,牛蛋,翠花，西湾子，狗剩，还有啥，哈哈,赖皮蛤蟆,哇哇兔，莉莉，也不知道够不够两行了";
         line_text_view.setText(name);
@@ -135,13 +133,15 @@ public class WidgetUseActivity extends BaseActivity {
         style_dialog_tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showOperateDialog.showDialog("温馨提示","如需保存现有答题进度，" +"\n" +  "请点击保存后再关闭答卷");
-            }
-        });
-        showOperateDialog.setOnSureClickListener(new ShowOperateDialog.OnSureClickListener() {
-            @Override
-            public void onSureClick() {
-                ToastUtils.showToast(mContext,"点击了确定");
+                new ShowOperateDialog.Builder(mContext)
+                        .setNoticeStr("温馨提示")
+                        .setContentStr("如需保存现有答题进度，" +"\n" +  "请点击保存后再关闭答卷")
+                        .setOnSureClickListener(new ShowOperateDialog.OnSureClickListener() {
+                            @Override
+                            public void onSureClick() {
+                                ToastUtils.showToast(mContext,"点击了确定");
+                            }
+                        }).create(R.layout.dialog_show_operate_style).showDialog();
             }
         });
         style_dialog_tv2.setOnClickListener(new View.OnClickListener() {
