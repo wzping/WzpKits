@@ -25,6 +25,7 @@ import wzp.libs.widget.RoundProgressBar;
 import wzp.libs.widget.dialog.AppLoadingDialog;
 import wzp.libs.widget.dialog.MultiChooseOperateDialog;
 import wzp.libs.widget.dialog.ShowOperateDialog;
+import wzp.libs.widget.dialog.SwitchOperateDialog;
 import wzp.libs.widget.time.CountDownTimerView;
 import wzp.libs.widget.time.CountUpTimerView;
 
@@ -45,7 +46,9 @@ public class WidgetUseActivity extends BaseActivity {
     /** 第二种弹窗样式 */
     @BindView(R.id.style_dialog_tv2)
     TextView style_dialog_tv2;
-
+    /** 第三种弹窗样式 */
+    @BindView(R.id.style_dialog_tv3)
+    TextView style_dialog_tv3;
 
     /** 单行显示TextView，可切换收起展开状态 */
     @BindView(R.id.line_text_view)
@@ -141,7 +144,6 @@ public class WidgetUseActivity extends BaseActivity {
                 ToastUtils.showToast(mContext,"点击了确定");
             }
         });
-
         style_dialog_tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +158,24 @@ public class WidgetUseActivity extends BaseActivity {
                                 }
                             }
                         })
-                        .create(R.layout.dialog_multi_choose_operate_style).showDialog();
+                        .create(R.layout.dialog_multi_choose_operate_style).showDialog();  //R.layout.dialog_multi_choose_operate_style 可不填，用默认的
+            }
+        });
+        style_dialog_tv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SwitchOperateDialog.Builder(mContext)
+                        .setOnOperateClickListener(new SwitchOperateDialog.OnOperateClickListener() {
+                            @Override
+                            public void onOperateClick(int operate) {
+                                if (operate == SwitchOperateDialog.SWITCH_OPERATE_CANCLE){
+                                    ToastUtils.showToast(mContext,"点击了取消");
+                                }else if (operate == SwitchOperateDialog.SWITCH_OPERATE_SURE){
+                                    ToastUtils.showToast(mContext,"点击了确定");
+                                }
+                            }
+                        })
+                        .create(R.layout.dialog_switch_operate_style).showDialog(); //R.layout.dialog_switch_operate_style  可不填 用默认的
             }
         });
 

@@ -1,0 +1,209 @@
+package wzp.libs.widget.dialog;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import wzp.libs.R;
+
+
+/**
+ * 选择操作Dialog
+ * (上面显示要展示的内容，下面一个取消按钮，一个确认按钮)
+ */
+public class SwitchOperateDialog extends Dialog{
+	private Context mContext;
+	//=============  控件  =========
+	/** 操作的提示内容 */
+	private TextView operate_content;
+	/** 取消 */
+	private TextView operate_cancel;
+	/** 确定 */
+	private TextView operate_sure;
+	//点击选择了 - 取消
+	public static final int SWITCH_OPERATE_CANCLE = 1;
+	//点击选择了 - 确定
+	public static final int SWITCH_OPERATE_SURE = 2;
+
+	/**
+	 * 初始化构造函数
+	 */
+	public SwitchOperateDialog(Context mContext) {
+		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
+		this.mContext = mContext;
+
+		setLayout(R.layout.dialog_switch_operate);
+	}
+
+	public SwitchOperateDialog(Context mContext, int layout) {
+		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
+		this.mContext = mContext;
+		setLayout(layout);
+	}
+
+
+	public void setLayout(int layout){
+		// 绑定Layout
+		setContentView(layout);
+
+		// 设置宽度,高度以及显示的位置
+		Window window = SwitchOperateDialog.this.getWindow();
+		window.setGravity(Gravity.CENTER);
+		WindowManager.LayoutParams lParams = window.getAttributes();
+		lParams.width = (int)(((Activity)mContext).getWindowManager().getDefaultDisplay().getWidth() * 0.7);
+		lParams.alpha = 1.0f;
+
+		operate_content =  this.findViewById(R.id.operate_content);
+		operate_cancel =  this.findViewById(R.id.operate_cancel);
+		operate_sure =  this.findViewById(R.id.operate_sure);
+
+	}
+
+	/**
+	 * 显示Dialog
+	 */
+	public void showDialog(){
+		// 显示Dialog
+		this.show();
+	}
+
+
+	/**
+	 * 默认显示方法
+	 */
+	@Override
+	public void show() {
+		// 显示
+		super.show();
+
+	}
+
+	/**
+	 * 关闭Dialog
+	 */
+	public void cancelDialog() {
+		if (this.isShowing()) {
+			this.cancel();
+		}
+	}
+
+	private static class SwitchOperateParam{
+		//设置操作提示文字显示
+		String operateContentStr;
+		//取消文字
+		String operateCancelStr;
+		//确定文字
+		String operateSureStr;
+		//取消和确定的点击事件
+		OnOperateClickListener onOperateClickListener;
+	}
+
+	public static class Builder{
+		private Context mContext;
+		private SwitchOperateParam switchOperateParam;
+		private SwitchOperateDialog switchOperateDialog;
+
+		public Builder(Context mContext){
+			this.mContext = mContext;
+			switchOperateParam = new SwitchOperateParam();
+		}
+
+		//设置显示文字
+		public Builder setOperateContentStr(String str){
+			switchOperateParam.operateContentStr = str;
+			return this;
+		}
+
+		public Builder setOperateCancelStr(String str){
+			switchOperateParam.operateCancelStr = str;
+			return this;
+		}
+
+		public Builder setOperateSureStr(String str){
+			switchOperateParam.operateSureStr = str;
+			return this;
+		}
+
+		public Builder setOnOperateClickListener(OnOperateClickListener listener) {
+			switchOperateParam.onOperateClickListener = listener;
+			return this;
+		}
+
+		public SwitchOperateDialog create(){
+			SwitchOperateDialog switchOperateDialog = new SwitchOperateDialog(mContext);
+
+			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
+			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
+			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
+			switchOperateDialog.setOnOperateClickListener(switchOperateParam.onOperateClickListener);
+
+
+			this.switchOperateDialog = switchOperateDialog;
+			return switchOperateDialog;
+		}
+
+		public SwitchOperateDialog create(int layout){
+			SwitchOperateDialog switchOperateDialog = new SwitchOperateDialog(mContext,layout);
+
+			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
+			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
+			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
+			switchOperateDialog.setOnOperateClickListener(switchOperateParam.onOperateClickListener);
+
+			this.switchOperateDialog = switchOperateDialog;
+			return switchOperateDialog;
+		}
+	}
+
+	/**
+	 * 设置显示文字
+	 * @param str
+	 */
+	private void setOperateContentStr(String str){
+		if (!TextUtils.isEmpty(str))
+			operate_content.setText(str);
+	}
+
+	private void setOperateCancelStr(String str){
+		if (!TextUtils.isEmpty(str))
+			operate_cancel.setText(str);
+	}
+
+	private void setOperateSureStr(String str){
+		if (!TextUtils.isEmpty(str))
+			operate_sure.setText(str);
+	}
+
+
+	public interface OnOperateClickListener {
+		void onOperateClick(int operate);
+	}
+
+	private void setOnOperateClickListener(final OnOperateClickListener onOperateClickListener) {
+		operate_cancel.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				cancelDialog();
+				if (onOperateClickListener != null) {
+					onOperateClickListener.onOperateClick(SWITCH_OPERATE_CANCLE);
+				}
+			}
+		});
+		operate_sure.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				cancelDialog();
+				if (onOperateClickListener != null) {
+					onOperateClickListener.onOperateClick(SWITCH_OPERATE_SURE);
+				}
+			}
+		});
+	}
+}
