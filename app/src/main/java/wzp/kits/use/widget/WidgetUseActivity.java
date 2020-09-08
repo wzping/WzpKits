@@ -16,16 +16,14 @@ import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.utils.ScreenUtils;
 import wzp.libs.utils.ToastUtils;
-import wzp.libs.utils.image.ImageConvertUtils;
 import wzp.libs.widget.CalendarView;
 import wzp.libs.widget.CircleImageView;
-import wzp.libs.widget.HexagonView;
 import wzp.libs.widget.LineTextView;
 import wzp.libs.widget.RoundProgressBar;
 import wzp.libs.widget.dialog.AppLoadingDialog;
 import wzp.libs.widget.dialog.MultiChooseOperateDialog;
-import wzp.libs.widget.dialog.ShowOperateDialog;
-import wzp.libs.widget.dialog.SwitchOperateDialog;
+import wzp.libs.widget.dialog.ShowSureOperateDialog;
+import wzp.libs.widget.dialog.ShowSwitchOperateDialog;
 import wzp.libs.widget.time.CountDownTimerView;
 import wzp.libs.widget.time.CountUpTimerView;
 
@@ -133,15 +131,15 @@ public class WidgetUseActivity extends BaseActivity {
         style_dialog_tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new ShowOperateDialog.Builder(mContext)
+                new ShowSureOperateDialog.Builder(mContext)
                         .setNoticeStr("温馨提示")
                         .setContentStr("如需保存现有答题进度，" +"\n" +  "请点击保存后再关闭答卷")
-                        .setOnSureClickListener(new ShowOperateDialog.OnSureClickListener() {
+                        .setOnSureClickListener(new ShowSureOperateDialog.OnSureClickListener() {
                             @Override
                             public void onSureClick() {
                                 ToastUtils.showToast(mContext,"点击了确定");
                             }
-                        }).create(R.layout.dialog_show_operate_style).showDialog();
+                        }).create(R.layout.dialog_show_sure_operate_style).showDialog();
             }
         });
         style_dialog_tv2.setOnClickListener(new View.OnClickListener() {
@@ -164,18 +162,18 @@ public class WidgetUseActivity extends BaseActivity {
         style_dialog_tv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new SwitchOperateDialog.Builder(mContext)
-                        .setOnOperateClickListener(new SwitchOperateDialog.OnOperateClickListener() {
+                new ShowSwitchOperateDialog.Builder(mContext)
+                        .setOnOperateClickListener(new ShowSwitchOperateDialog.OnOperateClickListener() {
                             @Override
                             public void onOperateClick(int operate) {
-                                if (operate == SwitchOperateDialog.SWITCH_OPERATE_CANCLE){
+                                if (operate == ShowSwitchOperateDialog.SWITCH_OPERATE_CANCLE){
                                     ToastUtils.showToast(mContext,"点击了取消");
-                                }else if (operate == SwitchOperateDialog.SWITCH_OPERATE_SURE){
+                                }else if (operate == ShowSwitchOperateDialog.SWITCH_OPERATE_SURE){
                                     ToastUtils.showToast(mContext,"点击了确定");
                                 }
                             }
                         })
-                        .create(R.layout.dialog_switch_operate_style).showDialog(); //R.layout.dialog_switch_operate_style  可不填 用默认的
+                        .create(R.layout.dialog_show_switch_operate_style).showDialog(); //R.layout.dialog_show_switch_operate_style  可不填 用默认的
             }
         });
 

@@ -16,7 +16,7 @@ import wzp.libs.R;
  * 展示操作Dialog
  * (上面显示要展示的内容，下面确认按钮)
  */
-public class ShowOperateDialog extends Dialog{
+public class ShowSureOperateDialog extends Dialog{
 	private Context mContext;
 	//=============  控件  =========
 	/** 操作提示 */
@@ -29,14 +29,14 @@ public class ShowOperateDialog extends Dialog{
 	/**
 	 * 初始化构造函数
 	 */
-	public ShowOperateDialog(Context mContext) {
+	public ShowSureOperateDialog(Context mContext) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
 
-		setLayout(R.layout.dialog_show_operate);
+		setLayout(R.layout.dialog_show_sure_operate);
 	}
 
-	public ShowOperateDialog(Context mContext, int layout) {
+	public ShowSureOperateDialog(Context mContext, int layout) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
 		setLayout(layout);
@@ -48,7 +48,7 @@ public class ShowOperateDialog extends Dialog{
 		setContentView(layout);
 
 		// 设置宽度,高度以及显示的位置
-		Window window = ShowOperateDialog.this.getWindow();
+		Window window = ShowSureOperateDialog.this.getWindow();
 		window.setGravity(Gravity.CENTER);
 		WindowManager.LayoutParams lParams = window.getAttributes();
 		lParams.width = (int)(((Activity)mContext).getWindowManager().getDefaultDisplay().getWidth() * 0.7) ;
@@ -106,7 +106,7 @@ public class ShowOperateDialog extends Dialog{
 	public static class Builder{
 		private Context mContext;
 		private ShowOperateParam showOperateParam;
-		private ShowOperateDialog showOperateDialog;
+		private ShowSureOperateDialog showOperateDialog;
 
 		public Builder(Context mContext){
 			this.mContext = mContext;
@@ -138,8 +138,8 @@ public class ShowOperateDialog extends Dialog{
 			return this;
 		}
 
-		public ShowOperateDialog create(){
-			ShowOperateDialog showOperateDialog = new ShowOperateDialog(mContext);
+		public ShowSureOperateDialog create(){
+			ShowSureOperateDialog showOperateDialog = new ShowSureOperateDialog(mContext);
 
 			showOperateDialog.setNoticeStr(showOperateParam.noticeStr);
 			showOperateDialog.setContentStr(showOperateParam.contentStr);
@@ -152,8 +152,8 @@ public class ShowOperateDialog extends Dialog{
 			return showOperateDialog;
 		}
 
-		public ShowOperateDialog create(int layout){
-			ShowOperateDialog showOperateDialog = new ShowOperateDialog(mContext,layout);
+		public ShowSureOperateDialog create(int layout){
+			ShowSureOperateDialog showOperateDialog = new ShowSureOperateDialog(mContext,layout);
 
 			showOperateDialog.setNoticeStr(showOperateParam.noticeStr);
 			showOperateDialog.setContentStr(showOperateParam.contentStr);

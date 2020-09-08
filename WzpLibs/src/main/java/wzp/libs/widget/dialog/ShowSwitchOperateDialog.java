@@ -8,7 +8,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import wzp.libs.R;
@@ -18,7 +17,7 @@ import wzp.libs.R;
  * 选择操作Dialog
  * (上面显示要展示的内容，下面一个取消按钮，一个确认按钮)
  */
-public class SwitchOperateDialog extends Dialog{
+public class ShowSwitchOperateDialog extends Dialog{
 	private Context mContext;
 	//=============  控件  =========
 	/** 操作的提示内容 */
@@ -35,14 +34,14 @@ public class SwitchOperateDialog extends Dialog{
 	/**
 	 * 初始化构造函数
 	 */
-	public SwitchOperateDialog(Context mContext) {
+	public ShowSwitchOperateDialog(Context mContext) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
 
-		setLayout(R.layout.dialog_switch_operate);
+		setLayout(R.layout.dialog_show_switch_operate);
 	}
 
-	public SwitchOperateDialog(Context mContext, int layout) {
+	public ShowSwitchOperateDialog(Context mContext, int layout) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
 		setLayout(layout);
@@ -54,7 +53,7 @@ public class SwitchOperateDialog extends Dialog{
 		setContentView(layout);
 
 		// 设置宽度,高度以及显示的位置
-		Window window = SwitchOperateDialog.this.getWindow();
+		Window window = ShowSwitchOperateDialog.this.getWindow();
 		window.setGravity(Gravity.CENTER);
 		WindowManager.LayoutParams lParams = window.getAttributes();
 		lParams.width = (int)(((Activity)mContext).getWindowManager().getDefaultDisplay().getWidth() * 0.7);
@@ -108,7 +107,7 @@ public class SwitchOperateDialog extends Dialog{
 	public static class Builder{
 		private Context mContext;
 		private SwitchOperateParam switchOperateParam;
-		private SwitchOperateDialog switchOperateDialog;
+		private ShowSwitchOperateDialog switchOperateDialog;
 
 		public Builder(Context mContext){
 			this.mContext = mContext;
@@ -136,8 +135,8 @@ public class SwitchOperateDialog extends Dialog{
 			return this;
 		}
 
-		public SwitchOperateDialog create(){
-			SwitchOperateDialog switchOperateDialog = new SwitchOperateDialog(mContext);
+		public ShowSwitchOperateDialog create(){
+			ShowSwitchOperateDialog switchOperateDialog = new ShowSwitchOperateDialog(mContext);
 
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
@@ -149,8 +148,8 @@ public class SwitchOperateDialog extends Dialog{
 			return switchOperateDialog;
 		}
 
-		public SwitchOperateDialog create(int layout){
-			SwitchOperateDialog switchOperateDialog = new SwitchOperateDialog(mContext,layout);
+		public ShowSwitchOperateDialog create(int layout){
+			ShowSwitchOperateDialog switchOperateDialog = new ShowSwitchOperateDialog(mContext,layout);
 
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
