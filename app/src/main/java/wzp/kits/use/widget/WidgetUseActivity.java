@@ -140,7 +140,7 @@ public class WidgetUseActivity extends BaseActivity {
                             public void onSureClick() {
                                 ToastUtils.showToast(mContext,"点击了确定");
                             }
-                        }).create(R.layout.dialog_show_sure_operate_style).showDialog();
+                        }).create().showDialog();   //R.layout.dialog_show_sure_operate_style
             }
         });
         style_dialog_tv2.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +174,7 @@ public class WidgetUseActivity extends BaseActivity {
                                 }
                             }
                         })
-                        .create(R.layout.dialog_show_switch_operate_style).showDialog(); //R.layout.dialog_show_switch_operate_style  可不填 用默认的
+                        .create().showDialog(); //R.layout.dialog_show_switch_operate_style  可不填 用默认的
             }
         });
 
