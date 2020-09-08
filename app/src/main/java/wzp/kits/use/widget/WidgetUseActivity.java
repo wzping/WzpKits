@@ -115,6 +115,7 @@ public class WidgetUseActivity extends BaseActivity {
         countup_timer_view.setTime(00,00,00);
         countup_timer_view.start();
 
+
     }
 
 
