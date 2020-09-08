@@ -1,4 +1,4 @@
-package wzp.libs.utils;
+package wzp.libs.utils.screen;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,12 +11,12 @@ import android.view.WindowManager;
 /**
  * 屏幕相关工具类
  */
-public final class ScreenUtils {
+public final class ScreenConvertUtils {
 	
 	/**
      * Don't let anyone instantiate this class.
      */
-    private ScreenUtils() {
+    private ScreenConvertUtils() {
         throw new Error("Do not need instantiate!");
     }
 

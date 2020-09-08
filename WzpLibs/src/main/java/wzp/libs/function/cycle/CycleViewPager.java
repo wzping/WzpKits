@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 import wzp.libs.R;
-import wzp.libs.utils.ImageViewUtils;
-import wzp.libs.utils.ScreenUtils;
+import wzp.libs.utils.image.ImageViewUtils;
+import wzp.libs.utils.screen.ScreenConvertUtils;
 import wzp.libs.widget.able.OnItemClickListener;
 import wzp.libs.widget.adapter.ViewPagerAdapter;
 
@@ -199,15 +199,15 @@ public class CycleViewPager extends Fragment implements ViewPager.OnPageChangeLi
 		linear_viewpager_indicator.removeAllViews();
 		FrameLayout.LayoutParams linear_param = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		linear_param.gravity = indicator_gravity;
-		linear_param.bottomMargin = ScreenUtils.dipConvertPx(mContext,incicator_margin_bottom);
-		linear_param.rightMargin = ScreenUtils.dipConvertPx(mContext,incicator_margin_right);
-		linear_param.leftMargin = ScreenUtils.dipConvertPx(mContext,incicator_margin_left);
+		linear_param.bottomMargin = ScreenConvertUtils.dipConvertPx(mContext,incicator_margin_bottom);
+		linear_param.rightMargin = ScreenConvertUtils.dipConvertPx(mContext,incicator_margin_right);
+		linear_param.leftMargin = ScreenConvertUtils.dipConvertPx(mContext,incicator_margin_left);
 		linear_viewpager_indicator.setLayoutParams(linear_param);
 		for (int i=0;i<size;i++){
 			ImageView iv = new ImageView(mContext);
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 			if (i != 0) { // 不是第一个点的话，就设置
-				params.leftMargin = ScreenUtils.dipConvertPx(mContext,incicator_margin_padding); // 这里的数字都是指像素
+				params.leftMargin = ScreenConvertUtils.dipConvertPx(mContext,incicator_margin_padding); // 这里的数字都是指像素
 			}
 			linear_viewpager_indicator.addView(iv,params);
 		}

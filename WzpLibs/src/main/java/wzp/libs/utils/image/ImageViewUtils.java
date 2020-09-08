@@ -1,10 +1,11 @@
-package wzp.libs.utils;
+package wzp.libs.utils.image;
 
 
 import android.content.Context;
 import android.widget.ImageView;
 
 import wzp.libs.R;
+import wzp.libs.utils.GlideUtils;
 
 
 /**

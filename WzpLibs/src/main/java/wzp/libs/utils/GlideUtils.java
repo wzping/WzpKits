@@ -81,7 +81,6 @@ public class GlideUtils {
 		loadPicList(mContext, url, iv, requestListener,R.drawable.ic_error1);
 	}
 
-	//加载图片
 	public void loadPicList(Context mContext, String url, ImageView iv,RequestListener<Drawable> requestListener,int defaultPic){
 
 		RequestOptions requestOptions = new RequestOptions()

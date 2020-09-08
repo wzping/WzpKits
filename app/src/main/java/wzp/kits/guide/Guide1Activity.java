@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
-import wzp.libs.utils.ImageViewUtils;
+import wzp.libs.utils.image.ImageViewUtils;
 import wzp.libs.widget.adapter.ViewPagerAdapter;
 
 

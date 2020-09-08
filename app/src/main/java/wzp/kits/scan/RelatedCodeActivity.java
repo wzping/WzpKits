@@ -10,17 +10,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.FileNotFoundException;
-
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.function.zxing.DefaultScanActivity;
 import wzp.libs.function.zxing.util.QrCodeUtils;
-import wzp.libs.utils.GlideUtils;
-import wzp.libs.utils.LogUtils;
 import wzp.libs.utils.PermissionUtils;
-import wzp.libs.utils.ScreenUtils;
 import wzp.libs.utils.ToastUtils;
 import wzp.libs.utils.image.ImageConvertUtils;
 

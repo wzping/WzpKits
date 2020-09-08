@@ -350,6 +350,4 @@ public final class ImageConvertUtils {
     public static boolean isGooglePhotosUri(Uri uri) {
         return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
-
-    //----------------------------------
 }

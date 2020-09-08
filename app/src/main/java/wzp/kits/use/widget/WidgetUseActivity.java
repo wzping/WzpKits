@@ -14,7 +14,7 @@ import java.util.Date;
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
-import wzp.libs.utils.ScreenUtils;
+import wzp.libs.utils.screen.ScreenConvertUtils;
 import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.CalendarView;
 import wzp.libs.widget.CircleImageView;
@@ -95,7 +95,7 @@ public class WidgetUseActivity extends BaseActivity {
         round_progress_bar.setProgress(25);
 
         calendar_center_tv.setText(calendar_view.getCurrentYear()+"年"+calendar_view.getCurrentMonth()+"月");
-        calendar_view.setCalendarWidth(getResources().getDisplayMetrics().widthPixels - ScreenUtils.dipConvertPx(mContext,30));
+        calendar_view.setCalendarWidth(getResources().getDisplayMetrics().widthPixels - ScreenConvertUtils.dipConvertPx(mContext,30));
         calendar_view.setCalendarHeight(getResources().getDisplayMetrics().heightPixels*3/10);
         calendar_view.setCircleTextColor(Color.WHITE);
         calendar_view.setCircleCellColor(getResources().getColor(R.color.colorPrimaryDark));

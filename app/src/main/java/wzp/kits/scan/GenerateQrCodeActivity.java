@@ -11,7 +11,7 @@ import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.function.zxing.util.QrCodeUtils;
-import wzp.libs.utils.ScreenUtils;
+import wzp.libs.utils.screen.ScreenConvertUtils;
 import wzp.libs.utils.image.ImageConvertUtils;
 
 
@@ -49,7 +49,7 @@ public class GenerateQrCodeActivity extends BaseActivity {
                     input_text.setError("输入内容不能为空");
                     return;
                 }
-                Bitmap generateBitmap = QrCodeUtils.generateQrCode(qrCodeStr, ScreenUtils.dipConvertPx(mContext,120), null);
+                Bitmap generateBitmap = QrCodeUtils.generateQrCode(qrCodeStr, ScreenConvertUtils.dipConvertPx(mContext,120), null);
                 iv_qrcode.setImageBitmap(generateBitmap);
             }
         });
@@ -62,7 +62,7 @@ public class GenerateQrCodeActivity extends BaseActivity {
                     input_text.setError("输入内容不能为空");
                     return;
                 }
-                Bitmap generateBitmap = QrCodeUtils.generateQrCode(qrCodeString, ScreenUtils.dipConvertPx(mContext,120), ImageConvertUtils.resToBitmap(mContext,R.drawable.ic_launcher));
+                Bitmap generateBitmap = QrCodeUtils.generateQrCode(qrCodeString, ScreenConvertUtils.dipConvertPx(mContext,120), ImageConvertUtils.resToBitmap(mContext,R.drawable.ic_launcher));
                 iv_qrcode.setImageBitmap(generateBitmap);
             }
         });

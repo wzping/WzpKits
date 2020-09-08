@@ -17,7 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import wzp.libs.R;
-import wzp.libs.utils.ScreenUtils;
+import wzp.libs.utils.screen.ScreenConvertUtils;
 
 
 /**
@@ -134,11 +134,11 @@ public class CalendarView extends View implements View.OnTouchListener {
 		//点击选择日子时的背景圈颜色
 		cellDownColor = mTypedArray.getColor(R.styleable.CalendarView_cellDownColor, Color.RED);
 		//周的文字大小
-		weekTextSize = mTypedArray.getDimension(R.styleable.CalendarView_weekTextSize, ScreenUtils.spConvertPx(mContext,16));
+		weekTextSize = mTypedArray.getDimension(R.styleable.CalendarView_weekTextSize, ScreenConvertUtils.spConvertPx(mContext,16));
 		//周的文字颜色
 		weekTextColor = mTypedArray.getColor(R.styleable.CalendarView_weekTextColor, Color.RED);
 		//整个日历日期的文字大小
-		calendarTextSize = mTypedArray.getDimension(R.styleable.CalendarView_calendarTextSize, ScreenUtils.spConvertPx(mContext,14));
+		calendarTextSize = mTypedArray.getDimension(R.styleable.CalendarView_calendarTextSize, ScreenConvertUtils.spConvertPx(mContext,14));
 		//今日日期是直接展示日期还是展示"今天"
 		showTodayNumber = mTypedArray.getBoolean(R.styleable.CalendarView_showTodayNumber,true);
 		//需要圈出的日期集合的文字颜色
