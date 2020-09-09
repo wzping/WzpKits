@@ -18,13 +18,13 @@ import wzp.libs.utils.LogUtils;
 /**
  * 保存图片
  */
-public class SaveImageUtils {
+public class ImageSaveUtils {
 
-	private SaveImageUtils() {
+	private ImageSaveUtils() {
 	}
 
 	// 日志Tag
-	private static final String TAG = SaveImageUtils.class.getSimpleName();
+	private static final String TAG = ImageSaveUtils.class.getSimpleName();
 
 	/**
 	 * 保存图片 - PNG

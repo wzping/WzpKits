@@ -13,19 +13,17 @@ import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import wzp.libs.utils.LogUtils;
-
 
 /**
  * 压缩图片
  */
-public class CompressImageUtils {
+public class ImageCompressUtils {
 
-	private CompressImageUtils() {
+	private ImageCompressUtils() {
 	}
 
 	// 日志Tag
-	private static final String TAG = CompressImageUtils.class.getSimpleName();
+	private static final String TAG = ImageCompressUtils.class.getSimpleName();
 
 
 	/**
