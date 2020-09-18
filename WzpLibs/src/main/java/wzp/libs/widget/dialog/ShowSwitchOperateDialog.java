@@ -106,6 +106,8 @@ public class ShowSwitchOperateDialog extends Dialog{
 		String operateCancelStr;
 		//确定文字
 		String operateSureStr;
+		//点击弹窗外围，是否能够取消弹窗
+		boolean canceledOnTouchOutside;
 		//取消和确定的点击事件
 		OnOperateClickListener onOperateClickListener;
 		//系统监听（当弹窗显示的时候，点击系统返回键）
@@ -143,6 +145,11 @@ public class ShowSwitchOperateDialog extends Dialog{
 			return this;
 		}
 
+		public Builder setCancelOnTouchOutside(boolean b){
+			switchOperateParam.canceledOnTouchOutside = b;
+			return this;
+		}
+
 		public Builder setOnOperateClickListener(OnOperateClickListener listener) {
 			switchOperateParam.onOperateClickListener = listener;
 			return this;
@@ -160,6 +167,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
+			switchOperateDialog.setCancelOnTouchOutside(switchOperateParam.canceledOnTouchOutside);
 			switchOperateDialog.setOnOperateClickListener(switchOperateParam.onOperateClickListener);
 			switchOperateDialog.setOnBackListener(switchOperateParam.onBackListener);
 
@@ -174,6 +182,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
+			switchOperateDialog.setCancelOnTouchOutside(switchOperateParam.canceledOnTouchOutside);
 			switchOperateDialog.setOnOperateClickListener(switchOperateParam.onOperateClickListener);
 			switchOperateDialog.setOnBackListener(switchOperateParam.onBackListener);
 
@@ -207,6 +216,9 @@ public class ShowSwitchOperateDialog extends Dialog{
 			operate_sure.setText(str);
 	}
 
+	private void setCancelOnTouchOutside(boolean b){
+		setCanceledOnTouchOutside(b);
+	}
 
 	public interface OnOperateClickListener {
 		void onOperateClick(int operate);
