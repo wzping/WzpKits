@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-
 import wzp.libs.R;
 
 
@@ -20,6 +19,8 @@ import wzp.libs.R;
 public class ShowSwitchOperateDialog extends Dialog{
 	private Context mContext;
 	//=============  控件  =========
+	/** 操作的提示 */
+	private TextView operate_notice;
 	/** 操作的提示内容 */
 	private TextView operate_content;
 	/** 取消 */
@@ -59,6 +60,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 		lParams.width = (int)(((Activity)mContext).getWindowManager().getDefaultDisplay().getWidth() * 0.7);
 		lParams.alpha = 1.0f;
 
+		operate_notice =  this.findViewById(R.id.operate_notice);
 		operate_content =  this.findViewById(R.id.operate_content);
 		operate_cancel =  this.findViewById(R.id.operate_cancel);
 		operate_sure =  this.findViewById(R.id.operate_sure);
@@ -94,6 +96,8 @@ public class ShowSwitchOperateDialog extends Dialog{
 	}
 
 	private static class SwitchOperateParam{
+		//设置操作提示
+		String operateNoticeStr;
 		//设置操作提示文字显示
 		String operateContentStr;
 		//取消文字
@@ -115,6 +119,11 @@ public class ShowSwitchOperateDialog extends Dialog{
 		}
 
 		//设置显示文字
+		public Builder setOperateNoticeStr(String str){
+			switchOperateParam.operateNoticeStr = str;
+			return this;
+		}
+
 		public Builder setOperateContentStr(String str){
 			switchOperateParam.operateContentStr = str;
 			return this;
@@ -138,6 +147,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 		public ShowSwitchOperateDialog create(){
 			ShowSwitchOperateDialog switchOperateDialog = new ShowSwitchOperateDialog(mContext);
 
+			switchOperateDialog.setOperateNoticeStr(switchOperateParam.operateNoticeStr);
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
@@ -151,6 +161,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 		public ShowSwitchOperateDialog create(int layout){
 			ShowSwitchOperateDialog switchOperateDialog = new ShowSwitchOperateDialog(mContext,layout);
 
+			switchOperateDialog.setOperateNoticeStr(switchOperateParam.operateNoticeStr);
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
@@ -165,6 +176,12 @@ public class ShowSwitchOperateDialog extends Dialog{
 	 * 设置显示文字
 	 * @param str
 	 */
+	private void setOperateNoticeStr(String str){
+		if (!TextUtils.isEmpty(str))
+			operate_notice.setText(str);
+	}
+
+
 	private void setOperateContentStr(String str){
 		if (!TextUtils.isEmpty(str))
 			operate_content.setText(str);
