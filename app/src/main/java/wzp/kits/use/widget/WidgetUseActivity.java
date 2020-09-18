@@ -80,6 +80,7 @@ public class WidgetUseActivity extends BaseActivity {
     @BindView(R.id.circle_imageview)
     CircleImageView circle_imageview;
 
+
     @Override
     protected int getLayout() {
         return R.layout.activity_widget_use;
