@@ -174,6 +174,13 @@ public class WidgetUseActivity extends BaseActivity {
                                 }
                             }
                         })
+                        .setOnBackListener(new ShowSwitchOperateDialog.OnBackListener() {
+                            @Override
+                            public void onBack() {
+                                ToastUtils.showToast(mContext,"点击了系统返回键");
+                                finish();
+                            }
+                        })
                         .create().showDialog(); //R.layout.dialog_show_switch_operate_style  可不填 用默认的
             }
         });

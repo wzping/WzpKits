@@ -3,8 +3,10 @@ package wzp.libs.widget.dialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -106,6 +108,8 @@ public class ShowSwitchOperateDialog extends Dialog{
 		String operateSureStr;
 		//取消和确定的点击事件
 		OnOperateClickListener onOperateClickListener;
+		//系统监听（当弹窗显示的时候，点击系统返回键）
+		OnBackListener onBackListener;
 	}
 
 	public static class Builder{
@@ -144,6 +148,11 @@ public class ShowSwitchOperateDialog extends Dialog{
 			return this;
 		}
 
+		public Builder setOnBackListener(OnBackListener listener) {
+			switchOperateParam.onBackListener = listener;
+			return this;
+		}
+
 		public ShowSwitchOperateDialog create(){
 			ShowSwitchOperateDialog switchOperateDialog = new ShowSwitchOperateDialog(mContext);
 
@@ -152,7 +161,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
 			switchOperateDialog.setOnOperateClickListener(switchOperateParam.onOperateClickListener);
-
+			switchOperateDialog.setOnBackListener(switchOperateParam.onBackListener);
 
 			this.switchOperateDialog = switchOperateDialog;
 			return switchOperateDialog;
@@ -166,6 +175,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
 			switchOperateDialog.setOnOperateClickListener(switchOperateParam.onOperateClickListener);
+			switchOperateDialog.setOnBackListener(switchOperateParam.onBackListener);
 
 			this.switchOperateDialog = switchOperateDialog;
 			return switchOperateDialog;
@@ -222,4 +232,27 @@ public class ShowSwitchOperateDialog extends Dialog{
 			}
 		});
 	}
+
+
+	public interface OnBackListener {
+		void onBack();
+	}
+
+	private void setOnBackListener(final OnBackListener onBackListener){
+		//setOnKeyListener - 系统监听（当弹窗显示的时候，点击系统返回键）
+		setOnKeyListener(new OnKeyListener() {
+			@Override
+			public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+				if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+					cancelDialog();
+					if (onBackListener!=null){
+						onBackListener.onBack();
+					}
+				}
+				return false;
+			}
+		});
+	}
+
+
 }
