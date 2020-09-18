@@ -171,22 +171,20 @@ public class StringUtils {
 		return true;
 	}
 
-	// == ----------------------------------------- ==
-
 
 	/**
-	 * 切割字符串
-	 * @param str 要切割的字符串
-	 * @param regex 切割的规则（按什么进行切割）
-	 * @return
+	 * 验证输入的身份证号是否合法
+	 * 由15位纯数字或18位数字（17位数字加“x”）组成，18位的话，可以是18位纯数字，或者17位数字加“x”
 	 */
-	public static String[] split(String str,String regex){
-		if(!isEmpty(str)){
-			String[] split = str.split(regex);
-			return split;
+	public static boolean isLegalIdentity(String identity){
+		if (identity.toUpperCase().matches("(^\\d{15}$)|(^\\d{17}([0-9]|X)$)")){
+			return true;
+		}else {
+			return false;
 		}
-		return null;
 	}
+
+	// == ----------------------------------------- ==
 
 	/**
 	 * 去掉字符串中的空格
@@ -220,86 +218,5 @@ public class StringUtils {
 		return dest;
 	}
 
-	// == ----------------------------------------- ==
 
-	/**
-	 * HTML颜色标记
-	 * @param content 给定的字符串
-	 * @param color 要设定的颜色
-	 * @return 返回的结果最后放在 Html.fromHtml();内
-	 */
-	public static String addHtmlColor(String content,String color) {
-		return "<font color=\""+ color +"\">" + content + "</font>";
-	}
-
-	/**
-	 * 加粗标记
-	 * @param content 给定的字符串
-	 * @return 最后放在 Html.fromHtml();内
-	 */
-	public static String addHtmlBold(String content) {
-		return "<b>" + content + "</b>";
-	}
-
-	/**
-	 * 颜色标记,以及加粗
-	 * @param content 给定的字符串
-	 * @param color 要设定的颜色
-	 * @return 最后放在 Html.fromHtml();内
-	 */
-	public static String addHtmlColorAndBlod(String content,String color) {
-		return "<b><font color=\""+ color +"\">" + content + "</font></b>";
-	}
-
-	/**
-	 * 下划线
-	 * @param content 给定的字符串
-	 * @return 最后放在 Html.fromHtml();内
-	 */
-	public static String addHtmlUnderline(String content) {
-		return "<u>" + content + "</u>";
-	}
-
-	/**
-	 * 字体倾斜
-	 * @param content 给定的字符串
-	 * @return 最后放在 Html.fromHtml();内
-	 */
-	public static String addHtmlIncline(String content) {
-		return "<i>" + content + "</i>";
-	}
-
-	/**
-	 * 将给定的字符串中所有给定的关键字标色
-	 * @param source 给定的字符串
-	 * @param keyword 给定的关键字
-	 * @param color 需要标记的颜色
-	 * @return
-	 */
-	public static String keywordTinting(String source, String keyword, String color) {
-		return keywordReplaceAll(source, keyword, ("<font color=\"" + color + "\">" + keyword + "</font>"));
-	}
-
-
-	/**
-	 * 将给定的字符串中所有给定的关键字进行替换内容
-	 * @param source 给定的字符串
-	 * @param keyword 给定的关键字
-	 * @param replacement 替换的内容
-	 * @return 返回的是带Html标签的字符串，在使用时要通过Html.fromHtml() 转换为Spanned对象再传递给TextView对象
-	 */
-	public static String keywordReplaceAll(String source, String keyword, String replacement) {
-		try {
-			if(source != null && source.trim().length() != 0){
-				if (keyword != null && keyword.trim().length() != 0) {
-					if(replacement != null && replacement.trim().length() != 0){
-						return source.replaceAll(keyword , replacement);
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return source;
-	}
 }

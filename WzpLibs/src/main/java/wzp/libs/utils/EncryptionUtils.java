@@ -1,5 +1,7 @@
 package wzp.libs.utils;
 
+import android.net.Uri;
+
 import java.security.MessageDigest;
 
 
@@ -13,6 +15,36 @@ public class EncryptionUtils {
      */
     private EncryptionUtils() {
         throw new Error("Do not need instantiate!");
+    }
+
+    // == ----------------------------------------- ==
+
+    /**
+     * 对url进行编码(比如url中含有中文，需要进行编码)
+     * @param url  需要编码的url
+     * @return
+     */
+    public static String urlEncode(String url) {
+        return Uri.encode(url, "-![.:/,%?&=]");
+    }
+
+
+    /**
+     * 对文本内容进行编码（比如文本中含有表情符号，需要进行编码）
+     * @param content 需要编码的内容
+     * @return
+     */
+    public static String textEncode(String content){
+        return Uri.encode(content);
+    }
+
+    /**
+     * 解码
+     * @param content  需要解码的内容
+     * @return
+     */
+    public static String decode(String content){
+        return Uri.decode(content);
     }
 
     // == ----------------------------------------- ==

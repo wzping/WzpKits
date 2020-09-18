@@ -285,7 +285,6 @@ public class DateUtils {
      *
      */
     public static boolean compare(String time1,String time2) {
-        boolean isBigger = false;
         String[] strs1 = time1.split("-");
         String[] strs2 = time2.split("-");
         int year1 = Integer.parseInt(strs1[0]); //年
@@ -308,8 +307,47 @@ public class DateUtils {
                     return true;
                 } else if (day1 < day2) {
                     return false;
-                } else { //日期相同返回true
+                } else { //日期相同返回false
+                    return false;
+                }
+            }
+        }
+    }
+
+
+    /**
+     * 日期比较大小
+     * @param time1
+     * @param time2
+     * @param regular   日期依据什么来进行分割
+     * @return   time2时间在前 ，time1时间在后   返回true   否则返回false
+     *
+     */
+    public static boolean compare(String time1,String time2,String regular) {
+        String[] strs1 = time1.split(regular);
+        String[] strs2 = time2.split(regular);
+        int year1 = Integer.parseInt(strs1[0]); //年
+        int year2 = Integer.parseInt(strs2[0]);
+        if (year1 > year2) {
+            return true;
+        } else if (year1 < year2) {
+            return false;
+        } else {  //年份相同  去判断月份
+            int month1 = Integer.parseInt(strs1[1]);//月
+            int month2 = Integer.parseInt(strs2[1]);
+            if (month1 > month2) {
+                return true;
+            } else if (month1 < month2) {
+                return false;
+            } else { //月份相同的情况下去判断日期
+                int day1 = Integer.parseInt(strs1[2]);
+                int day2= Integer.parseInt(strs2[2]);
+                if (day1 > day2) {
                     return true;
+                } else if (day1 < day2) {
+                    return false;
+                } else { //日期相同返回false
+                    return false;
                 }
             }
         }
@@ -336,5 +374,47 @@ public class DateUtils {
         } else {
             return mFormatter.format("%02d:%02d", minutes, seconds).toString();
         }
+    }
+
+    /**
+     * 将时间（秒）转化为 00:00:00  格式显示
+     * @param secondTotal   单位是秒
+     * @return
+     */
+    public static String secondsToFormat(int secondTotal) {
+        if (secondTotal <= 0) {
+            return "00:00:00";
+        }
+        int seconds = secondTotal % 60;
+        int minutes = (secondTotal / 60) % 60;
+        int hours = secondTotal / 3600;
+        StringBuilder mFormatBuilder = new StringBuilder();
+        Formatter mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
+        return mFormatter.format("%02d:%02d:%02d", hours, minutes, seconds).toString();
+        //%02d 表示把整型数据打印最低两位，如果不足两位，用0补齐 ,比如 printf("%02d",2);  打印出来的结果是02
+    }
+
+
+    /**
+     * 计算两时间的时差（单位s）
+     * @param startTime  开始时间（yyyy-MM-dd HH:mm:ss）
+     * @param endTime 结束时间（yyyy-MM-dd HH:mm:ss）
+     * @return 两时间的时差
+     */
+    public static long calDateDifferent(String startTime, String endTime) {
+        long diff = 0;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date startDate = null;
+        Date endDate = null;
+        try {
+            startDate = df.parse(startTime);
+            endDate = df.parse(endTime);
+
+            diff = endDate.getTime() - startDate.getTime();// 毫秒ms
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return diff / 1000;
     }
 }
