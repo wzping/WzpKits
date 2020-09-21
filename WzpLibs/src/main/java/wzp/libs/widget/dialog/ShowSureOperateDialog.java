@@ -15,6 +15,7 @@ import wzp.libs.R;
 /**
  * 展示操作Dialog
  * (上面显示要展示的内容，下面确认按钮)
+ * 该dialog暂时不用，放着以后修改成别的
  */
 public class ShowSureOperateDialog extends Dialog{
 	private Context mContext;

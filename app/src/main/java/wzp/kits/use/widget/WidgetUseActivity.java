@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -14,6 +15,7 @@ import java.util.Date;
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
+import wzp.libs.utils.SpanUtils;
 import wzp.libs.utils.screen.ScreenConvertUtils;
 import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.CalendarView;
@@ -164,25 +166,43 @@ public class WidgetUseActivity extends BaseActivity {
         style_dialog_tv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new ShowSwitchOperateDialog.Builder(mContext)
+                ShowSwitchOperateDialog showSwitchOperateDialog = new ShowSwitchOperateDialog.Builder(mContext)
                         .setOnOperateClickListener(new ShowSwitchOperateDialog.OnOperateClickListener() {
                             @Override
                             public void onOperateClick(int operate) {
-                                if (operate == ShowSwitchOperateDialog.SWITCH_OPERATE_CANCLE){
-                                    ToastUtils.showToast(mContext,"点击了取消");
-                                }else if (operate == ShowSwitchOperateDialog.SWITCH_OPERATE_SURE){
-                                    ToastUtils.showToast(mContext,"点击了确定");
+                                if (operate == ShowSwitchOperateDialog.SWITCH_OPERATE_CANCLE) {
+                                    ToastUtils.showToast(mContext, "点击了取消");
+                                } else if (operate == ShowSwitchOperateDialog.SWITCH_OPERATE_SURE) {
+                                    ToastUtils.showToast(mContext, "点击了确定");
                                 }
                             }
                         })
                         .setOnBackListener(new ShowSwitchOperateDialog.OnBackListener() {
                             @Override
                             public void onBack() {
-                                ToastUtils.showToast(mContext,"点击了系统返回键");
+                                ToastUtils.showToast(mContext, "点击了系统返回键");
                                 finish();
                             }
                         })
-                        .create().showDialog(); //R.layout.dialog_show_switch_operate_style  可不填 用默认的
+                        .create(); //R.layout.dialog_show_switch_operate_style  可不填 用默认的
+
+                showSwitchOperateDialog.getOperateContentSpan().append("    亲，感谢您信任并使用新E疗！我们依据最新法律法规、监管政策要求更新了")
+                        .append("《新E疗隐私政策》")
+                        .setClickSpan(Color.parseColor("#2cb3f9"), false, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ToastUtils.showToast(mContext,"点击了");
+                            }
+                        })
+                        .append("，特此向您推送本提示。")
+                        .appendLine()
+                        .appendLine()
+                        .append("    请您务必仔细阅读并透彻理解相关条款内容，在确认充分理解并同意后使用新E疗。")
+                        .appendLine()
+                        .appendLine()
+                        .append("    我们将按法律法规要求，采取相应安全保护措施，尽力保护您的个人信息安全可控。")
+                        .create();
+                showSwitchOperateDialog.showDialog();
             }
         });
 

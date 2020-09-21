@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import wzp.libs.R;
+import wzp.libs.utils.SpanUtils;
 
 
 /**
@@ -40,7 +41,6 @@ public class ShowSwitchOperateDialog extends Dialog{
 	public ShowSwitchOperateDialog(Context mContext) {
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
-
 		setLayout(R.layout.dialog_show_switch_operate);
 	}
 
@@ -48,6 +48,12 @@ public class ShowSwitchOperateDialog extends Dialog{
 		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
 		this.mContext = mContext;
 		setLayout(layout);
+	}
+
+	public ShowSwitchOperateDialog(Context mContext, int layout,int dialogWidth) {
+		super(mContext, R.style.Theme_Light_FullScreenDialogAct);
+		this.mContext = mContext;
+		setLayout(layout,dialogWidth);
 	}
 
 
@@ -60,6 +66,24 @@ public class ShowSwitchOperateDialog extends Dialog{
 		window.setGravity(Gravity.CENTER);
 		WindowManager.LayoutParams lParams = window.getAttributes();
 		lParams.width = (int)(((Activity)mContext).getWindowManager().getDefaultDisplay().getWidth() * 0.7);
+		lParams.alpha = 1.0f;
+
+		operate_notice =  this.findViewById(R.id.operate_notice);
+		operate_content =  this.findViewById(R.id.operate_content);
+		operate_cancel =  this.findViewById(R.id.operate_cancel);
+		operate_sure =  this.findViewById(R.id.operate_sure);
+
+	}
+
+	public void setLayout(int layout,int dialogWidth){
+		// 绑定Layout
+		setContentView(layout);
+
+		// 设置宽度,高度以及显示的位置
+		Window window = ShowSwitchOperateDialog.this.getWindow();
+		window.setGravity(Gravity.CENTER);
+		WindowManager.LayoutParams lParams = window.getAttributes();
+		lParams.width = dialogWidth;
 		lParams.alpha = 1.0f;
 
 		operate_notice =  this.findViewById(R.id.operate_notice);
@@ -86,6 +110,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 		// 显示
 		super.show();
 
+
 	}
 
 	/**
@@ -106,8 +131,8 @@ public class ShowSwitchOperateDialog extends Dialog{
 		String operateCancelStr;
 		//确定文字
 		String operateSureStr;
-		//点击弹窗外围，是否能够取消弹窗
-		boolean canceledOnTouchOutside;
+		//点击弹窗外围，是否能够取消弹窗(默认是可以取消的)
+		boolean canceledOnTouchOutside = true;
 		//取消和确定的点击事件
 		OnOperateClickListener onOperateClickListener;
 		//系统监听（当弹窗显示的时候，点击系统返回键）
@@ -189,6 +214,21 @@ public class ShowSwitchOperateDialog extends Dialog{
 			this.switchOperateDialog = switchOperateDialog;
 			return switchOperateDialog;
 		}
+
+		public ShowSwitchOperateDialog create(int layout,int dialogWidth){
+			ShowSwitchOperateDialog switchOperateDialog = new ShowSwitchOperateDialog(mContext,layout,dialogWidth);
+
+			switchOperateDialog.setOperateNoticeStr(switchOperateParam.operateNoticeStr);
+			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
+			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
+			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
+			switchOperateDialog.setCancelOnTouchOutside(switchOperateParam.canceledOnTouchOutside);
+			switchOperateDialog.setOnOperateClickListener(switchOperateParam.onOperateClickListener);
+			switchOperateDialog.setOnBackListener(switchOperateParam.onBackListener);
+
+			this.switchOperateDialog = switchOperateDialog;
+			return switchOperateDialog;
+		}
 	}
 
 	/**
@@ -204,6 +244,10 @@ public class ShowSwitchOperateDialog extends Dialog{
 	private void setOperateContentStr(String str){
 		if (!TextUtils.isEmpty(str))
 			operate_content.setText(str);
+	}
+
+	public SpanUtils getOperateContentSpan(){
+		return SpanUtils.with(operate_content);
 	}
 
 	private void setOperateCancelStr(String str){
@@ -265,6 +309,5 @@ public class ShowSwitchOperateDialog extends Dialog{
 			}
 		});
 	}
-
 
 }
