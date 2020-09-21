@@ -110,7 +110,6 @@ public class ShowSwitchOperateDialog extends Dialog{
 		// 显示
 		super.show();
 
-
 	}
 
 	/**
