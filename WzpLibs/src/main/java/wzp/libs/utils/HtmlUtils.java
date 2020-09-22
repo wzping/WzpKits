@@ -5,6 +5,11 @@ import android.widget.TextView;
 
 /**
  * Html 工具类
+ * 原始展示方式:
+ * String tipsStr = "<font color=\"#424242\">" + "亲爱的全科医生您好！如需发布相关课程请移步PC端登录全科医生个人中心" + "</font><br/>" +
+ * 				"<font color=\"#2cb3f9\">" + HttpConstants.gpPrivateUrl + "</font><br/>" +
+ * 				"<font color=\"#424242\">" + "进行相关课程发布！" + "</font>";
+ * textview.setText(Html.fromHtml(tipsStr));
  */
 public final class HtmlUtils {
 
@@ -67,6 +72,14 @@ public final class HtmlUtils {
      */
     public static String addHtmlIncline(String content) {
         return "<i>" + content + "</i>";
+    }
+
+    /**
+     * 换行
+     * @return
+     */
+    public static String addNewLine(){
+        return "<br/>";
     }
 
     /**
