@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import wzp.libs.R;
+import wzp.libs.utils.HtmlUtils;
 import wzp.libs.utils.SpanUtils;
 
 
@@ -159,6 +160,11 @@ public class ShowSwitchOperateDialog extends Dialog{
 			return this;
 		}
 
+		public Builder setOperateContentHtmlStr(String str){
+			switchOperateParam.operateContentStr = str;
+			return this;
+		}
+
 		public Builder setOperateCancelStr(String str){
 			switchOperateParam.operateCancelStr = str;
 			return this;
@@ -189,6 +195,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 
 			switchOperateDialog.setOperateNoticeStr(switchOperateParam.operateNoticeStr);
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
+			switchOperateDialog.setOperateContentHtmlStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
 			switchOperateDialog.setCancelOnTouchOutside(switchOperateParam.canceledOnTouchOutside);
@@ -204,6 +211,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 
 			switchOperateDialog.setOperateNoticeStr(switchOperateParam.operateNoticeStr);
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
+			switchOperateDialog.setOperateContentHtmlStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
 			switchOperateDialog.setCancelOnTouchOutside(switchOperateParam.canceledOnTouchOutside);
@@ -219,6 +227,7 @@ public class ShowSwitchOperateDialog extends Dialog{
 
 			switchOperateDialog.setOperateNoticeStr(switchOperateParam.operateNoticeStr);
 			switchOperateDialog.setOperateContentStr(switchOperateParam.operateContentStr);
+			switchOperateDialog.setOperateContentHtmlStr(switchOperateParam.operateContentStr);
 			switchOperateDialog.setOperateCancelStr(switchOperateParam.operateCancelStr);
 			switchOperateDialog.setOperateSureStr(switchOperateParam.operateSureStr);
 			switchOperateDialog.setCancelOnTouchOutside(switchOperateParam.canceledOnTouchOutside);
@@ -243,6 +252,11 @@ public class ShowSwitchOperateDialog extends Dialog{
 	private void setOperateContentStr(String str){
 		if (!TextUtils.isEmpty(str))
 			operate_content.setText(str);
+	}
+
+	private void setOperateContentHtmlStr(String str){
+		if (!TextUtils.isEmpty(str))
+			HtmlUtils.setHtmlText(operate_content,str);
 	}
 
 	public SpanUtils getOperateContentSpan(){
