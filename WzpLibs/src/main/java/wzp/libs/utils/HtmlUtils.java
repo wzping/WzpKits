@@ -93,7 +93,6 @@ public final class HtmlUtils {
         return keywordReplaceAll(source, keyword, ("<font color=\"" + color + "\">" + keyword + "</font>"));
     }
 
-
     /**
      * 将给定的字符串中所有给定的关键字进行替换内容
      * @param source 给定的字符串
