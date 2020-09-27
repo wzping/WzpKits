@@ -41,12 +41,8 @@ public class TakePicAlbum {
 
     // == ----------------------------------------- ==
 
-    /** 用户信息文件路径 */
-    public static final String BASE_UDATA_PATH = File.separator + "uData" + File.separator;
-    /**  */
-    public static final String AP_UHEAD_PATH = BASE_UDATA_PATH + "uHead" + File.separator;
-    /**  */
-    public static final String AVATAR = "avatar" + ".png"; //这里要加后缀，要不然上传图片不成功
+    private static File file;
+
 
     //拍照
     private static final int CHOOSE_CAMERA = 1;
@@ -58,12 +54,10 @@ public class TakePicAlbum {
     /**
      * 相机选择
      * @param isCamera 是否选择拍照  true:拍照   false:从相片中选择
+     * @param uHeadFile 用户头像地址(例如:/storage/emulated/0/Android/data/wzp.kits/cache/uData/uHead/avatar  创建了名为uHead文件夹,图片名字为avatar)
      */
-    public static void cameraSwitch(final Context mContext, boolean isCamera){
-        // 获取用户头像地址
-        //uHeadFile:/storage/emulated/0/Android/data/wzp.kits/cache/uData/uHead/avatar
-        //创建了名为uHead文件夹(创建的位置为上面的路径)
-        final File uHeadFile = getFileCache(mContext, AP_UHEAD_PATH , AVATAR);
+    public static void cameraSwitch(final Context mContext, boolean isCamera, final File uHeadFile){
+        file = uHeadFile;
         LogUtils.d("删除前-uHeadFile:" + uHeadFile.toString());
         //删除uHead文件夹下面的头像（名字为avatar的图片）
         uHeadFile.delete();
@@ -116,18 +110,15 @@ public class TakePicAlbum {
         switch(requestCode){
             case CHOOSE_CAMERA://拍照
                 if (isResultOk) {
-                    // 获取用户头像地址
-                    File uHeadFile = getFileCache(mContext,AP_UHEAD_PATH, AVATAR);
                     // 保存的路径
-                    Uri saveUri = Uri.fromFile(uHeadFile);
+                    Uri saveUri = Uri.fromFile(file);
                     //startPhotoZoom(saveUri, saveUri);
-                    startPhotoZoom(mContext,FileUtils.fileToUri(mContext,uHeadFile), saveUri);
+                    startPhotoZoom(mContext,FileUtils.fileToUri(mContext,file), saveUri);
                 }
                 break;
             case CHOOSE_ALBUM://从相册中选择
-                File headFile = getFileCache(mContext,AP_UHEAD_PATH,AVATAR);
                 // 保存的路径
-                Uri savUri = Uri.fromFile(headFile);
+                Uri savUri = Uri.fromFile(file);
                 if(data != null){
                     startPhotoZoom(mContext,data.getData(), savUri); // 读取相册缩放图片
                     LogUtils.d("data:" + data.getData());
@@ -135,10 +126,9 @@ public class TakePicAlbum {
                 break;
             case RESULT_ZOOM:// 裁剪 处理结果
                 // 获取用户头像地址
-                File uHeadFile = getFileCache(mContext, AP_UHEAD_PATH,AVATAR);
-                if(uHeadFile!=null&&uHeadFile.exists()){
+                if(file!=null&&file.exists()){
                     if (onGetAvatarListener!=null){
-                        onGetAvatarListener.getAvatar(uHeadFile);
+                        onGetAvatarListener.getAvatar(file);
                     }
                 }
                 break;
@@ -182,21 +172,6 @@ public class TakePicAlbum {
         // 设置保存的地址
         intent.putExtra(MediaStore.EXTRA_OUTPUT, saveUri);
         ((Activity)mContext).startActivityForResult(intent, RESULT_ZOOM);
-    }
-
-    /**
-     * 获取用户头像缓存地址
-     * @param mContext 上下文
-     * @param fName 文件名
-     * @return
-     */
-    public static File getFileCache(Context mContext,String path, String fName){
-        // 获取头像存储地址
-        String vpCache = SDCardUtils.getCacheDirPath(mContext) + path;
-        // 防止不存在目录文件，自动创建
-        FileUtils.createFolder(vpCache);
-        // 返回头像地址
-        return new File(vpCache + fName);
     }
 
     private static OnGetAvatarListener onGetAvatarListener;
