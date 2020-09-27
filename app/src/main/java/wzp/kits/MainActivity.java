@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
+import wzp.kits.avatar.ChangeAvatarActivity;
 import wzp.kits.cycle.CycleViewPagerActivity;
 import wzp.kits.gif.LoadingGifActivity;
 import wzp.kits.guide.Guide1Activity;
@@ -34,6 +35,9 @@ public class MainActivity extends BaseActivity {
     /** 扫码 */
     @BindView(R.id.am_tv_scan)
     TextView am_tv_scan;
+    /** 拍照从相册中选择 */
+    @BindView(R.id.am_tv_avatar)
+    TextView am_tv_avatar;
 
     @Override
     protected int getLayout() {
@@ -88,6 +92,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, RelatedCodeActivity.class));
+            }
+        });
+        //拍照从相册中选择
+        am_tv_avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, ChangeAvatarActivity.class));
             }
         });
     }

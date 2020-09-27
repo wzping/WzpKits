@@ -81,6 +81,25 @@
             android:name=".use.widget.WidgetUseActivity"
             android:screenOrientation="portrait"
             android:exported="false"/>
+
+        <activity
+            android:name=".avatar.ChangeAvatarActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+
+
+        <!--拍照从相册中选择-->
+        <!--这里要写.fileProvider,因为项目中用到的 FileUtils.fileToUri 方法中就是写的.fileProvider,要保持一致-->
+        <!--wzp.kits.fileProvider : wzp.kits改成对应的包名-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="wzp.kits.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

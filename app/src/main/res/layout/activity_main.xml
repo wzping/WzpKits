@@ -119,5 +119,18 @@
             android:text="扫码"
             android:textColor="@color/white"
             android:textSize="16sp"/>
+
+        <!--拍照从相片中选择-->
+        <TextView
+            android:id="@+id/am_tv_avatar"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="拍照从相片中选择"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_margin="10dp"/>
     </LinearLayout>
 </ScrollView>
