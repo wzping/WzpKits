@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.File;
+
 import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
@@ -56,9 +58,9 @@ public class ChangeAvatarActivity extends BaseActivity {
 
         TakePicAlbum.setOnGetAvatarListener(new TakePicAlbum.OnGetAvatarListener() {
             @Override
-            public void getAvatar(String str) {
+            public void getAvatar(File file) {
                 //展示头像
-                GlideUtils.getInstance().loadPic(mContext,str,change_avatar,R.drawable.ic_default_avatar);
+                GlideUtils.getInstance().loadPic(mContext,file.getAbsolutePath(),change_avatar,R.drawable.ic_default_avatar);
             }
         });
     }

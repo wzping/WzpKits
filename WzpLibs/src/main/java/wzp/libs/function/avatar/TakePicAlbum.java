@@ -138,7 +138,7 @@ public class TakePicAlbum {
                 File uHeadFile = getFileCache(mContext, AP_UHEAD_PATH,AVATAR);
                 if(uHeadFile!=null&&uHeadFile.exists()){
                     if (onGetAvatarListener!=null){
-                        onGetAvatarListener.getAvatar(uHeadFile.getAbsolutePath());
+                        onGetAvatarListener.getAvatar(uHeadFile);
                     }
                 }
                 break;
@@ -202,7 +202,7 @@ public class TakePicAlbum {
     private static OnGetAvatarListener onGetAvatarListener;
 
     public interface OnGetAvatarListener{
-        void getAvatar(String str);
+        void getAvatar(File file);
     }
 
     public static void setOnGetAvatarListener(OnGetAvatarListener getAvatarListener){
