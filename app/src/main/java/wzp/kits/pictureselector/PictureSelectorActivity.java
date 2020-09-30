@@ -16,6 +16,8 @@ import butterknife.BindView;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 import wzp.libs.utils.LogUtils;
+import wzp.libs.utils.screen.ScreenConvertUtils;
+import wzp.libs.utils.screen.ScreenUtils;
 import wzp.libs.widget.adapter.RvBaseViewHolder;
 
 
@@ -39,7 +41,7 @@ public class PictureSelectorActivity extends BaseActivity {
 
     @Override
     protected void initValues() {
-        pictureSelectorAdapter = new PictureSelectorAdapter(mContext,columnCount);
+        pictureSelectorAdapter = new PictureSelectorAdapter(mContext,(ScreenUtils.getWidth(mContext)- ScreenConvertUtils.dipConvertPx(mContext,15*(columnCount+1))) / columnCount);
         pictureSelectorAdapter.setImageMax(maxNum);
         pic_selector_recyclerview.setLayoutManager(new GridLayoutManager(mContext,columnCount));
         pic_selector_recyclerview.setAdapter(pictureSelectorAdapter);
