@@ -87,6 +87,11 @@
             android:screenOrientation="portrait"
             android:exported="false"/>
 
+        <activity
+            android:name=".pictureselector.PictureSelectorActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+
 
         <!--拍照从相册中选择-->
         <!--这里要写.fileProvider,因为项目中用到的 FileUtils.fileToUri 方法中就是写的.fileProvider,要保持一致-->

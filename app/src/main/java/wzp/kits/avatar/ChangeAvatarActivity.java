@@ -86,7 +86,7 @@ public class ChangeAvatarActivity extends BaseActivity {
      * 获取用户头像缓存地址
      * @param mContext 上下文
      * @param fName 文件名
-     * @return  /storage/emulated/0/Android/data/wzp.kits/cache/uData/uHead/avatar
+     * @return  /storage/emulated/0/Android/data/wzp.kits/cache/uData/uHead/avatar   uHead为文件夹  avatar为头像图片
      */
     public static File getFileCache(Context mContext, String path, String fName){
         // 获取头像存储地址

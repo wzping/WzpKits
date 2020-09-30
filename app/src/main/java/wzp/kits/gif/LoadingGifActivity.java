@@ -4,7 +4,9 @@ import android.view.WindowManager;
 import wzp.kits.BaseActivity;
 import wzp.kits.R;
 
-
+/**
+ * 加载gif
+ */
 public class LoadingGifActivity extends BaseActivity {
 
 

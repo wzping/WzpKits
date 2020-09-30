@@ -8,7 +8,9 @@ import wzp.libs.function.cycle.CycleViewPager;
 import wzp.libs.utils.ToastUtils;
 import wzp.libs.widget.able.OnItemClickListener;
 
-
+/**
+ * 轮播图
+ */
 public class CycleViewPagerActivity extends BaseActivity {
 
     /** 轮播控件 */

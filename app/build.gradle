@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -39,4 +43,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'  //这里要用4.5.0，高版本慎用，会有崩溃
     //WzpLib
     implementation project(path: ':WzpLibs')
+    //PictureSelector
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.5'// 2.2.3-glide 4.5.0    2.2.4/2.2.5-glide 4.9.0  再上去的版本就是androidx的了
 }

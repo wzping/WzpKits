@@ -132,5 +132,16 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/am_tv_pic_selector"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="PictureSelector"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
     </LinearLayout>
 </ScrollView>
