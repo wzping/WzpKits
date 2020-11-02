@@ -10,6 +10,7 @@ import wzp.kits.gif.LoadingGifActivity;
 import wzp.kits.guide.Guide1Activity;
 import wzp.kits.guide.Guide2Activity;
 import wzp.kits.photoview.PhotoActivity;
+import wzp.kits.picker.PickerViewActivity;
 import wzp.kits.pictureselector.PictureSelectorActivity;
 import wzp.kits.scan.RelatedCodeActivity;
 import wzp.kits.use.widget.WidgetUseActivity;
@@ -42,6 +43,9 @@ public class MainActivity extends BaseActivity {
     /** PictureSelector */
     @BindView(R.id.am_tv_pic_selector)
     TextView am_tv_pic_selector;
+    /** PickerView(联动) */
+    @BindView(R.id.am_tv_picker)
+    TextView am_tv_picker;
 
     @Override
     protected int getLayout() {
@@ -105,10 +109,18 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(mContext, ChangeAvatarActivity.class));
             }
         });
+        //PictureSelector
         am_tv_pic_selector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, PictureSelectorActivity.class));
+            }
+        });
+        //PickerView(联动)
+        am_tv_picker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, PickerViewActivity.class));
             }
         });
     }

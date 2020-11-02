@@ -25,12 +25,12 @@ public class PictureSelectorAdapter extends RecyclerView.Adapter<PictureSelector
     private static final int TYPE_SHOW_DEFAULT = 1;
     /** 显示相册中选择的图片 */
     private static final int TYPE_SHOW_SELECT = 2;
-    /** 图片展示的高（跟宽等长）,传递的是每张图片的宽度 */
-    private int height;
+    /** 每张图片的宽度 */
+    private int width;
 
-    public PictureSelectorAdapter(Context mContext,int height){
+    public PictureSelectorAdapter(Context mContext,int width){
         this.mContext = mContext;
-        this.height = height;
+        this.width = width;
     }
 
     //-------------- extends RecyclerView.Adapter 就要复写的方法 (3个)-----------------------
@@ -45,7 +45,7 @@ public class PictureSelectorAdapter extends RecyclerView.Adapter<PictureSelector
     public void onBindViewHolder(final PictureSelectorViewHolder pictureSelectorViewHolder, int position) {
 
         ViewGroup.LayoutParams layoutParams = pictureSelectorViewHolder.pic_selector_photo.getLayoutParams();
-        layoutParams.height = height;
+        layoutParams.height = width;
         pictureSelectorViewHolder.pic_selector_photo.setLayoutParams(layoutParams);
 
         if (getItemViewType(position) == TYPE_SHOW_DEFAULT) {

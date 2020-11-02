@@ -33,7 +33,7 @@ public class CycleViewPagerActivity extends BaseActivity {
 //        cycle_viewpager.startCycle(resPage);
 
         //要展示的网络轮播图
-        String[] urlPage = {"http://xyl.txygc.com:80/medical-web-boss/upload/20190620/1561014183479默认标题_横版海报_2019.06.20 (1).jpg","http://xyl.txygc.com:80/medical-web-boss/upload/20190701/1561967224572timg (5)-恢复的.jpg",
+        String[] urlPage = {"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1311805132,2077013194&fm=26&gp=0.jpg","https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2171722984,1420867509&fm=26&gp=0.jpg",
         "http://pic.5tu.cn/uploads/allimg/081228/1516200.jpg","http://photocdn.sohu.com/20141212/mp573973_1418353896401_3.jpeg"};
         cycle_viewpager.startCycle(urlPage,onItemClickListener);
     }
