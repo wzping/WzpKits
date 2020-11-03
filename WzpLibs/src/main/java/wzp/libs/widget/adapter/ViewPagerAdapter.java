@@ -7,6 +7,9 @@ import java.util.List;
 import wzp.libs.widget.able.OnItemClickListener;
 
 
+/**
+ * ViewPager展示View(例如 RecyclerView、PhotoView、ImageView、LayoutInflater加载的布局等)
+ */
 public class ViewPagerAdapter extends PagerAdapter {
 
 	/** 显示的数据源 */

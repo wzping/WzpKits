@@ -162,7 +162,7 @@ public class AppUtils {
      * @param pid 进程号  当前进程的pid ： android.os.Process.myPid()
      * @return 进程名
      */
-    private static String getProcessName(int pid) {
+    public static String getProcessName(int pid) {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("/proc/" + pid + "/cmdline"));

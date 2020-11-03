@@ -8,7 +8,7 @@ import android.view.View;
 
 /**
  * 布局是多少就占多少高度
- * 解决ViewPager嵌套在ScrollView里面不显示的问题
+ * 解决ViewPager嵌套在ScrollView等控件里面不显示(显示不全)的问题
  */
 public class AdjustHeightViewPager extends ViewPager{
 
